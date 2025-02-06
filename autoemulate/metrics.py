@@ -73,9 +73,26 @@ def history_matching(obs, expectations, threshold=3.0, discrepancy=0.0, rank=1):
     return {"I": I, "NROY": list(NROY), "RO": list(RO)}
 
 
-def max_likelihood(
-    expectations, obs, cov_matrix=None, lr=0.01, epochs=1000, quantile_threshold=0.20
-):
+def negative_log_likelihood(model_params, obs_mean, obs_var):
+    """
+    Compute the negative log-likelihood.
+
+    Parameters:
+        model_params (Tensor): Model parameters [mean, variance] as a PyTorch tensor.
+        obs_mean (Tensor): Observed mean (float or tensor).
+        obs_var (Tensor): Observed variance (float or tensor).
+
+    Returns:
+        Tensor: Negative log-likelihood value.
+    """
+    model_mean, model_var = model_params
+    log_likelihood = 0.5 * torch.log(2 * torch.pi * obs_var) + (
+        obs_mean - model_mean
+    ) ** 2 / (2 * obs_var)
+    return log_likelihood.sum()  # Sum over all observations
+
+
+def max_likelihood(expectations, obs, lr=0.01, epochs=1000, quantile_threshold=0.10):
     """
     Perform Maximum Likelihood Estimation (MLE) using PyTorch to optimize parameters.
 
@@ -88,41 +105,34 @@ def max_likelihood(
     Returns:
         dict: Contains the log-likelihoods and plausible region indices.
     """
+
     pred_mean, pred_var = expectations
     obs_mean, obs_var = obs
-    model_means = torch.tensor(
-        pred_mean, dtype=torch.float32, requires_grad=True
-    )  # (n_samples, n_outputs)
-    model_vars = torch.tensor(
-        pred_var, dtype=torch.float32, requires_grad=True
-    )  # (n_samples, n_outputs)
-    obs_mean = torch.tensor(obs_mean, dtype=torch.float32)  # (n_outputs,)
-    obs_var = torch.tensor(obs_var, dtype=torch.float32)  # (n_outputs,)
+    obs_mean = torch.tensor(obs_mean, dtype=torch.float32)
+    obs_var = torch.tensor(obs_var, dtype=torch.float32)
 
-    # If no covariance matrix is provided, use a diagonal covariance matrix (diagonal of variances)
-    if cov_matrix is None:
-        cov_matrix = torch.diag(obs_var)  # (n_outputs, n_outputs)
+    # Track negative log-likelihoods for each parameter set
+    NLLs = []
 
-    optimizer = torch.optim.Adam([model_means, model_vars], lr=lr)
+    for mean, var in zip(pred_mean, pred_var):
+        params = torch.tensor([mean.item(), var.item()], requires_grad=True)
+        optimizer = torch.optim.Adam([params], lr=lr)
+        # Optimize parameters
+        for _ in range(epochs):
+            optimizer.zero_grad()
+            nll = negative_log_likelihood(params, obs_mean, obs_var)
+            nll.backward()  # Compute gradients
+            optimizer.step()
 
-    for _ in range(epochs):
-        optimizer.zero_grad()
+        NLLs.append(nll)
+    NLLs = torch.tensor(NLLs)
 
-        nll = 0.5 * torch.sum(
-            torch.log(torch.det(cov_matrix))
-            + torch.matmul(obs_mean - model_means, torch.linalg.inv(cov_matrix))
-            * obs_mean
-            - model_means,
-            dim=1,  # Sum over outputs (columns)
-        )
-        nll.mean().backward()
-        optimizer.step()
-
-    final_nll = nll.detach()
-
+    # Define plausible regions: example : top 5% of likelihoods
     threshold = torch.quantile(
-        final_nll, quantile_threshold
+        NLLs, quantile_threshold
     )  # Get the quantile threshold based on NLL values
-    plausible_indices = torch.where(final_nll <= threshold)[0].tolist()
-
-    return {"nll_values": final_nll.tolist(), "plausible_indices": plausible_indices}
+    plausible_indices = torch.where(NLLs <= threshold)[0].tolist()
+    return {
+        "LLs": NLLs.numpy(),
+        "plausible_indices": plausible_indices,
+    }
