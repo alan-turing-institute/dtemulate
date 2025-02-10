@@ -3,6 +3,8 @@ import torch
 from sklearn.metrics import r2_score
 from sklearn.metrics import root_mean_squared_error
 
+from autoemulate.utils import select_kernel
+
 
 def rmse(y_true, y_pred, multioutput="uniform_average"):
     """Returns the root mean squared error.
@@ -73,57 +75,101 @@ def history_matching(obs, expectations, threshold=3.0, discrepancy=0.0, rank=1):
     return {"I": I, "NROY": list(NROY), "RO": list(RO)}
 
 
-def negative_log_likelihood(model_params, obs_mean, obs_var):
+def negative_log_likelihood(K, obs_mean, model_mean):
     """
-    Compute the negative log-likelihood.
+    Compute the negative log-likelihood for a given set of parameters and observed values.
 
     Parameters:
-        model_params (Tensor): Model parameters [mean, variance] as a PyTorch tensor.
-        obs_mean (Tensor): Observed mean (float or tensor).
-        obs_var (Tensor): Observed variance (float or tensor).
+        K (Tensor): The covariance matrix (size: N x N) based on the input-output relationship.
+        obs_mean (Tensor): The observed mean values (1D tensor or scalar).
+        model_mean (Tensor): The predicted mean values of the model (1D tensor or scalar).
 
     Returns:
-        Tensor: Negative log-likelihood value.
+        Tensor: The computed negative log-likelihood value.
     """
-    model_mean, model_var = model_params
-    log_likelihood = 0.5 * torch.log(2 * torch.pi * obs_var) + (
-        obs_mean - model_mean
-    ) ** 2 / (2 * obs_var)
-    return log_likelihood.sum()  # Sum over all observations
+    Sigma = K  # Combine cross-output and input covariance
+    noise_term = 1e-5 * torch.eye(Sigma.shape[0])  # Add numerical stability
+    Sigma = noise_term + Sigma
+
+    # Compute the inverse and log determinant of Σ(θ)
+    Sigma_inv = torch.inverse(Sigma)
+    log_det_Sigma = torch.logdet(Sigma)
+
+    # Compute the difference between observed and predicted means
+    diff = (obs_mean - model_mean).reshape(-1, 1)
+
+    # Compute the quadratic term: (y - m(θ))^T Σ(θ)^(-1) (y - m(θ))
+    quad_term = torch.matmul(diff.T, torch.matmul(Sigma_inv, diff))
+
+    # Negative log-likelihood
+    nll = 0.5 * (
+        quad_term + log_det_Sigma + len(diff) * torch.log(torch.tensor(2 * torch.pi))
+    )
+
+    return nll
 
 
-def max_likelihood(expectations, obs, lr=0.01, epochs=1000, quantile_threshold=0.10):
+def max_likelihood(
+    expectations, obs, lr=0.01, epochs=1000, quantile_threshold=0.10, kernel_name=None
+):
     """
-    Perform Maximum Likelihood Estimation (MLE) using PyTorch to optimize parameters.
+    Maximize the likelihood by optimizing the model parameters to fit the observed data.
 
-    Parameters:
-        obs (tuple): Observations as (mean, variance).
-        expectations (tuple): Predicted (mean, variance).
-        lr (float): Learning rate for optimizer.
-        epochs (int): Number of optimization epochs.
+    Args:
+        expectations (tuple): A tuple containing two elements:
+            - pred_mean (Tensor): The predicted mean values (could be 1D or 2D tensor).
+            - pred_var (Tensor): The predicted variance values (could be 1D or 2D tensor).
+        obs (list or tuple): A list or tuple containing:
+            - obs_mean (float or Tensor): The observed mean(s).
+        lr (float, optional): The learning rate for optimization. Defaults to 0.01.
+        epochs (int, optional): Number of epochs to run for optimization. Defaults to 1000.
+        quantile_threshold (float, optional): Threshold for defining plausible regions based on NLL. Defaults to 0.10.
+        kernel_name (str, optional): The name of the kernel function to use (e.g., "RBF"). Defaults to None.
 
     Returns:
-        dict: Contains the log-likelihoods and plausible region indices.
+        dict: A dictionary containing:
+            - "LLs": A numpy array of negative log-likelihoods for each parameter set.
+            - "plausible_indices": A list of indices for parameter sets with NLL less than or equal to the quantile threshold.
     """
-
     pred_mean, pred_var = expectations
-    obs_mean, obs_var = obs
-    obs_mean = torch.tensor(obs_mean, dtype=torch.float32)
-    obs_var = torch.tensor(obs_var, dtype=torch.float32)
 
+    obs_mean, obs_var = np.array(obs)
+    if obs_mean is not list:
+        obs_mean = [obs_mean]
+    if obs_var is not list:
+        obs_var = np.array([obs_var])
+
+    obs_mean = torch.tensor(obs_mean, dtype=torch.float32, requires_grad=True)
+    obs_var = torch.tensor(obs_var, dtype=torch.float32, requires_grad=True)
     # Track negative log-likelihoods for each parameter set
     NLLs = []
 
     for mean, var in zip(pred_mean, pred_var):
-        params = torch.tensor([mean.item(), var.item()], requires_grad=True)
+        kernel = select_kernel(kernel_name, length_scale=5000.0)
+        K = kernel(mean.reshape(-1, 1))  # X is the input data
+        K = torch.tensor(K, dtype=torch.float32, requires_grad=True)
+        C = torch.tensor(np.eye(K.size(0)), dtype=torch.float32)
+
+        mean = (
+            torch.tensor(mean, dtype=torch.float32)
+            if not isinstance(mean, torch.Tensor)
+            else mean
+        )
+        var = (
+            torch.tensor(var, dtype=torch.float32)
+            if not isinstance(var, torch.Tensor)
+            else var
+        )
+        params = torch.cat((mean.view(-1), var.view(-1))).detach().requires_grad_(True)
         optimizer = torch.optim.Adam([params], lr=lr)
         # Optimize parameters
+        nll_sum = 0.0
         for _ in range(epochs):
             optimizer.zero_grad()
-            nll = negative_log_likelihood(params, obs_mean, obs_var)
-            nll.backward()  # Compute gradients
+            nll = negative_log_likelihood(K, obs_mean, mean)
+            nll.backward()
             optimizer.step()
-
+            nll_sum += nll.item()
         NLLs.append(nll)
     NLLs = torch.tensor(NLLs)
 
