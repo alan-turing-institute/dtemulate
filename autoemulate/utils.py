@@ -9,10 +9,15 @@ import numpy as np
 import torch
 from sklearn.base import RegressorMixin
 from sklearn.exceptions import ConvergenceWarning
+from sklearn.gaussian_process.kernels import ConstantKernel
+from sklearn.gaussian_process.kernels import DotProduct
+from sklearn.gaussian_process.kernels import ExpSineSquared
+from sklearn.gaussian_process.kernels import Matern
+from sklearn.gaussian_process.kernels import RationalQuadratic
+from sklearn.gaussian_process.kernels import RBF
 from sklearn.model_selection import KFold
 from sklearn.multioutput import MultiOutputRegressor
 from sklearn.pipeline import Pipeline
-
 
 # manage warnings -------------------------------------------------------------
 
@@ -383,3 +388,34 @@ def _check_cv(cv):
             "currently support other cross-validation methods."
         )
     return cv
+
+
+# Select Kernel --------------------------------------------
+
+
+def select_kernel(kernel_name, **kwargs):
+    """
+    Select and initialize a kernel from sklearn.gaussian_process.kernels.
+
+    Parameters:
+    - kernel_name: Name of the kernel to use ('RBF', 'Matern', 'RationalQuadratic', 'ExpSineSquared', 'DotProduct', 'ConstantKernel')
+    - kwargs: Additional keyword arguments to pass to the kernel constructor
+
+    Returns:
+    - kernel: Initialized kernel object
+    """
+    kernels = {
+        "RBF": RBF,
+        "Matern": Matern,
+        "RationalQuadratic": RationalQuadratic,
+        "ExpSineSquared": ExpSineSquared,
+        "DotProduct": DotProduct,
+        "ConstantKernel": ConstantKernel,
+    }
+
+    if kernel_name not in kernels:
+        raise ValueError(
+            f"Kernel '{kernel_name}' not recognized. Available kernels: {list(kernels.keys())}"
+        )
+
+    return kernels[kernel_name](**kwargs)
