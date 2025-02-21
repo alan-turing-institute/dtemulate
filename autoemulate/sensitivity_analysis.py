@@ -44,7 +44,7 @@ def _sensitivity_analysis(
     Si = _sobol_analysis(model, problem, X, N, conf_level)
 
     if as_df:
-        return _sobol_results_to_df(Si)
+        return _sobol_results_to_df(Si, problem)
     else:
         return Si
 
@@ -96,7 +96,7 @@ def _generate_problem(X):
 
     return {
         "num_vars": X.shape[1],
-        "names": [f"x{i+1}" for i in range(X.shape[1])],
+        "names": [f"X{i+1}" for i in range(X.shape[1])],
         "bounds": [[X[:, i].min(), X[:, i].max()] for i in range(X.shape[1])],
     }
 
@@ -148,14 +148,16 @@ def _sobol_analysis(model, problem=None, X=None, N=1024, conf_level=0.95):
     return results
 
 
-def _sobol_results_to_df(results):
+def _sobol_results_to_df(results, problem=None):
     """
-    Convert Sobol results to a (long-format)pandas DataFrame.
+    Convert Sobol results to a (long-format) pandas DataFrame.
 
     Parameters:
     -----------
     results : dict
         The Sobol indices returned by sobol_analysis.
+    problem : dict, optional
+        The problem definition, including 'names'.
 
     Returns:
     --------
@@ -163,6 +165,13 @@ def _sobol_results_to_df(results):
         A DataFrame with columns: 'output', 'parameter', 'index', 'value', 'confidence'.
     """
     rows = []
+    # Use custom names if provided, else default to "x1", "x2", etc.
+    parameter_names = (
+        problem["names"]
+        if problem is not None
+        else [f"X{i+1}" for i in range(len(next(iter(results.values()))["S1"]))]
+    )
+
     for output, indices in results.items():
         for index_type in ["S1", "ST", "S2"]:
             values = indices.get(index_type)
@@ -174,7 +183,7 @@ def _sobol_results_to_df(results):
                 rows.extend(
                     {
                         "output": output,
-                        "parameter": f"X{i+1}",
+                        "parameter": parameter_names[i],  # Use appropriate names
                         "index": index_type,
                         "value": value,
                         "confidence": conf,
@@ -187,7 +196,7 @@ def _sobol_results_to_df(results):
                 rows.extend(
                     {
                         "output": output,
-                        "parameter": f"X{i+1}-X{j+1}",
+                        "parameter": f"{parameter_names[i]}-{parameter_names[j]}",  # Use appropriate names
                         "index": index_type,
                         "value": values[i, j],
                         "confidence": conf_values[i, j],
@@ -196,16 +205,15 @@ def _sobol_results_to_df(results):
                     for j in range(i + 1, n)
                     if not np.isnan(values[i, j])
                 )
-
     return pd.DataFrame(rows)
 
 
 # plotting --------------------------------------------------------------------
 
 
-def _validate_input(results, index):
+def _validate_input(results, problem, index):
     if not isinstance(results, pd.DataFrame):
-        results = _sobol_results_to_df(results)
+        results = _sobol_results_to_df(results, problem=problem)
         # we only want to plot one index type at a time
     valid_indices = ["S1", "S2", "ST"]
     if index not in valid_indices:
@@ -241,7 +249,7 @@ def _create_bar_plot(ax, output_data, output_name):
     ax.set_title(f"Output: {output_name}")
 
 
-def _plot_sensitivity_analysis(results, index="S1", n_cols=None, figsize=None):
+def _plot_sensitivity_analysis(results, problem, index="S1", n_cols=None, figsize=None):
     """
     Plot the sensitivity analysis results.
 
@@ -263,7 +271,7 @@ def _plot_sensitivity_analysis(results, index="S1", n_cols=None, figsize=None):
     """
     with plt.style.context("fast"):
         # prepare data
-        results = _validate_input(results, index)
+        results = _validate_input(results, problem, index)
         unique_outputs = results["output"].unique()
         n_outputs = len(unique_outputs)
 

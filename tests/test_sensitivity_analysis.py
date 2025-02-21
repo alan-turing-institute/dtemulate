@@ -150,8 +150,22 @@ def sobol_results_1d(model_1d):
 
 # # test conversion to DataFrame --------------------------------------------------
 @pytest.mark.filterwarnings("ignore::FutureWarning")
-def test_sobol_results_to_df(sobol_results_1d):
-    df = _sobol_results_to_df(sobol_results_1d)
+@pytest.mark.parametrize(
+    "problem, expected_names",
+    [
+        (
+            {
+                "num_vars": 2,
+                "names": ["c", "v0"],
+                "bounds": [(-5.0, 1.0), (0.0, 1000.0)],
+            },
+            ["c", "v0", "c-v0"],
+        ),
+        (None, ["X1", "X2", "X1-X2"]),
+    ],
+)
+def test_sobol_results_to_df(sobol_results_1d, problem, expected_names):
+    df = _sobol_results_to_df(sobol_results_1d, problem)
     assert isinstance(df, pd.DataFrame)
     assert df.columns.tolist() == [
         "output",
@@ -160,7 +174,7 @@ def test_sobol_results_to_df(sobol_results_1d):
         "value",
         "confidence",
     ]
-    assert ["X1", "X2", "X1-X2"] in df["parameter"].unique()
+    assert expected_names in df["parameter"].unique()
     assert all(isinstance(x, float) for x in df["value"])
     assert all(isinstance(x, float) for x in df["confidence"])
 
@@ -171,13 +185,23 @@ def test_sobol_results_to_df(sobol_results_1d):
 # test _validate_input ----------------------------------------------------------
 @pytest.mark.filterwarnings("ignore::FutureWarning")
 def test_validate_input(sobol_results_1d):
+    problem = {
+        "num_vars": 2,
+        "names": ["c", "v0"],
+        "bounds": [(-5.0, 1.0), (0.0, 1000.0)],
+    }
     with pytest.raises(ValueError):
-        _validate_input(sobol_results_1d, "S3")
+        _validate_input(sobol_results_1d, problem=problem, index="S3")
 
 
 @pytest.mark.filterwarnings("ignore::FutureWarning")
 def test_validate_input_valid(sobol_results_1d):
-    Si = _validate_input(sobol_results_1d, "S1")
+    problem = {
+        "num_vars": 2,
+        "names": ["c", "v0"],
+        "bounds": [(-5.0, 1.0), (0.0, 1000.0)],
+    }
+    Si = _validate_input(sobol_results_1d, problem=problem, index="S1")
     assert isinstance(Si, pd.DataFrame)
 
 
@@ -207,5 +231,5 @@ def test_generate_problem():
     X = np.array([[0, 0], [1, 1], [2, 2]])
     problem = _generate_problem(X)
     assert problem["num_vars"] == 2
-    assert problem["names"] == ["x1", "x2"]
+    assert problem["names"] == ["X1", "X2"]
     assert problem["bounds"] == [[0, 2], [0, 2]]
