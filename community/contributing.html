@@ -1,0 +1,693 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Contributing to AutoEmulate &#8212; AutoEmulate: A package for semi-automated emulation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=7f8ff830"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'community/contributing';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Contributing Emulators" href="contributing-emulators.html" />
+    <link rel="prev" title="Community" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/AE_logo_final.png" class="logo__image only-light" alt="AutoEmulate: A package for semi-automated emulation - Home"/>
+    <script>document.write(`<img src="../_static/AE_logo_final.png" class="logo__image only-dark" alt="AutoEmulate: A package for semi-automated emulation - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Welcome to AutoEmulate
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../getting-started/index.html">Getting started</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/installation.html">Installation instructions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/quickstart.html">Quickstart</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../tutorials/index.html">Tutorials</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/01_start.html">A deeper dive into <code class="docutils literal notranslate"><span class="pre">AutoEmulate</span></code></a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/02_speed.html">Minimising computation time</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Community</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Contributing to AutoEmulate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing-emulators.html">Contributing Emulators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing-docs.html">Contributing to the Docs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="release.html">Releasing AutoEmulate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="code-of-conduct.html">Code of Conduct</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="faq/index.html">Frequently Asked Questions</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="faq/faq-users.html">First-Time Users’ Frequently Asked Questions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="faq/faq-contributors.html">First-Time Contributors’ Frequently Asked Questions</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../reference/index.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../reference/compare.html">autoemulate.compare</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/datasets.html">autoemulate.datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/history_matching.html"><code class="docutils literal notranslate"><span class="pre">history_matching()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/sensitivity_analysis.html">autoemulate.sensitivity_analysis</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../reference/simulations/index.html">autoemulate.simulations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../reference/simulations/projectile.html">autoemulate.simulations.projectile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/simulations/epidemic.html">autoemulate.simulations.epidemic</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../reference/emulators/index.html">autoemulate.emulators</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../reference/emulators/rbf.html">autoemulate.emulators.radial_basis_functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/emulators/polynomials.html">autoemulate.emulators.polynomials</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/emulators/random_forest.html">autoemulate.emulators.random_forest</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/emulators/support_vector_machines.html">autoemulate.emulators.support_vector_machines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/emulators/gradient_boosting.html">autoemulate.emulators.gradient_boosting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/emulators/light_gbm.html">autoemulate.emulators.light_gbm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/emulators/conditional_neural_process.html">autoemulate.emulators.conditional_neural_process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/emulators/conditional_neural_process_attn.html">autoemulate.emulators.conditional_neural_process_attn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/emulators/gaussian_process.html">autoemulate.emulators.gaussian_process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/emulators/gaussian_process_mt.html">autoemulate.emulators.gaussian_process_mt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/emulators/neural_net_sk.html">autoemulate.emulators.neural_net_sk</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reference/emulators/gaussian_process_sklearn.html">autoemulate.emulators.gaussian_process</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/alan-turing-institute/autoemulate" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/alan-turing-institute/autoemulate/issues/new?title=Issue%20on%20page%20%2Fcommunity/contributing.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/community/contributing.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Contributing to AutoEmulate</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#important-resources">Important Resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-contribute">How to Contribute</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-submit-changes">How to Submit Changes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fork-the-repository">1. Fork the Repository</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#make-changes">2. Make Changes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#commit-and-push">3. Commit and Push</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#open-a-pull-request">4. Open a Pull Request</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#first-timers-corner">First-timers’ Corner</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reporting-bugs">Reporting Bugs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recognising-contributions">Recognising Contributions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#need-help">Need Help?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inclusivity">Inclusivity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-in-touch">Get in touch</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="contributing-to-autoemulate">
+<h1>Contributing to AutoEmulate<a class="headerlink" href="#contributing-to-autoemulate" title="Link to this heading">#</a></h1>
+<p>💫⚙️🤖 We’re excited that you’re here and want to contribute. 🤖⚙️💫</p>
+<p>We want to ensure that every user and contributor feels welcome, included and supported to participate in the AutoEmulate community. Whether you’re a seasoned developer, a machine learning researcher, a data scientist, or just someone eager to learn and contribute, <strong>you are welcome here</strong>. We value every contribution, be it big or small, and we appreciate the unique perspectives you bring to the project.</p>
+<p>We hope that the information provided in this document will make it as easy as possible for you to get involved. If you find that you have questions that are not discussed below, please let us know through one of the many ways to <a class="reference internal" href="#get-in-touch"><span class="xref myst">get in touch</span></a>.</p>
+<section id="important-resources">
+<h2>Important Resources<a class="headerlink" href="#important-resources" title="Link to this heading">#</a></h2>
+<p>If you’d like to find out more about AutoEmulate, make sure to check out:</p>
+<ol class="arabic simple">
+<li><p><strong>README</strong>: For a high-level overview of the project, please refer to our <a class="reference external" href="https://github.com/alan-turing-institute/autoemulate/blob/main/README.md">README</a>.</p></li>
+<li><p><strong>Documentation</strong>: For more detailed information about the project, please refer to our <a class="reference external" href="https://alan-turing-institute.github.io/autoemulate">documentation</a>.</p></li>
+</ol>
+</section>
+<section id="how-to-contribute">
+<h2>How to Contribute<a class="headerlink" href="#how-to-contribute" title="Link to this heading">#</a></h2>
+<p>This section provides a high-level guide to contributing to AutoEmulate, designed for those with little or no experience with open source projects. For more detailed information, please also refer to the docs for:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://alan-turing-institute.github.io/autoemulate/community/contributing-emulators.html">contributing emulators</a></p></li>
+<li><p><a class="reference external" href="https://alan-turing-institute.github.io/autoemulate/community/contributing-docs.html">contributing to the docs</a></p></li>
+</ul>
+<p>We welcome contributions of all kinds, be it code, documentation, or community engagement. We encourage you to read through the following sections to learn more about how you can contribute to the package.</p>
+</section>
+<section id="how-to-submit-changes">
+<h2>How to Submit Changes<a class="headerlink" href="#how-to-submit-changes" title="Link to this heading">#</a></h2>
+<p>We follow the same instructions for submitting changes to the project as those developed by <a class="reference external" href="https://github.com/the-turing-way/the-turing-way/blob/main/CONTRIBUTING.md#making-a-change-with-a-pull-request">The Turing Way</a>. In short, there are five steps to adding changes to this repository:</p>
+<ol class="arabic simple">
+<li><p><strong>Fork the Repository</strong>: Start by <a class="reference external" href="https://github.com/alan-turing-institute/autoemulate/fork">forking the AutoEmulate repository</a>.</p></li>
+<li><p><strong>Make Changes</strong>: Ensure your code follows the existing code style (<a class="reference external" href="https://peps.python.org/pep-0008/">PEP 8</a>) and passes all tests.</p></li>
+<li><p><strong>Commit and Push</strong>: Use clear commit messages.</p></li>
+<li><p><strong>Open a Pull Request</strong>: Ensure you describe the changes made and any additional details.</p></li>
+</ol>
+<section id="fork-the-repository">
+<h3>1. Fork the Repository<a class="headerlink" href="#fork-the-repository" title="Link to this heading">#</a></h3>
+<p>Once you have <a class="reference external" href="https://github.com/alan-turing-institute/autoemulate/fork">created a fork of the repository</a>, you now have your own unique local copy of AutoEmulate. Changes here won’t affect anyone else’s work, so it’s a safe space to explore edits to the code!</p>
+<p>Make sure to <a class="reference external" href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork">keep your fork up to date</a> with the main repository, otherwise, you can end up with lots of dreaded <a class="reference external" href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/addressing-merge-conflicts/about-merge-conflicts">merge conflicts</a>.</p>
+</section>
+<section id="make-changes">
+<h3>2. Make Changes<a class="headerlink" href="#make-changes" title="Link to this heading">#</a></h3>
+<p>After writing new code or modifying existing code, please make sure to:</p>
+<ul class="simple">
+<li><p>write <a class="reference external" href="https://numpydoc.readthedocs.io/en/latest/format.html">numpy-style docstrings</a>.</p></li>
+<li><p>write tests in the <code class="docutils literal notranslate"><span class="pre">tests/</span></code> directory using <a class="reference external" href="https://docs.pytest.org/en/7.4.x/">pytest</a>.</p></li>
+<li><p>format the code using <a class="reference external" href="https://github.com/psf/black">black</a></p></li>
+</ul>
+<p>It would be great if you could also <a class="reference external" href="https://alan-turing-institute.github.io/autoemulate/community/contributing-docs.html">update the documentation</a> to reflect the changes you’ve made. If you plan to add a new emulator have a look at the <a class="reference external" href="https://alan-turing-institute.github.io/autoemulate/community/contributing-emulators.html">contributing emulators docs</a>.</p>
+</section>
+<section id="commit-and-push">
+<h3>3. Commit and Push<a class="headerlink" href="#commit-and-push" title="Link to this heading">#</a></h3>
+<p>While making your changes, commit often and write good, detailed commit messages. <a class="reference external" href="https://chris.beams.io/posts/git-commit/">This blog</a> explains how to write a good Git commit message and why it matters.</p>
+</section>
+<section id="open-a-pull-request">
+<h3>4. Open a Pull Request<a class="headerlink" href="#open-a-pull-request" title="Link to this heading">#</a></h3>
+<p>We encourage you to open a pull request as early in your contributing process as possible. This allows everyone to see what is currently being worked on. It also provides you, the contributor, feedback in real-time. GitHub has a <a class="reference external" href="https://guides.github.com/introduction/flow">nice introduction</a> to the pull request workflow.</p>
+</section>
+</section>
+<section id="first-timers-corner">
+<h2>First-timers’ Corner<a class="headerlink" href="#first-timers-corner" title="Link to this heading">#</a></h2>
+<p>Just to-reiterate: We welcome all contributions, no matter how big or small! If anything in this guide is unclear, please reach out to ask or simply ask questions in a PR or issue.</p>
+</section>
+<section id="reporting-bugs">
+<h2>Reporting Bugs<a class="headerlink" href="#reporting-bugs" title="Link to this heading">#</a></h2>
+<p>Found a bug? Please open an issue here on GitHub to report it. We have a template for opening issues, so make sure you follow the correct format and ensure you include:</p>
+<ul class="simple">
+<li><p>A clear title.</p></li>
+<li><p>A detailed description of the bug.</p></li>
+<li><p>Steps to reproduce it.</p></li>
+<li><p>Expected versus actual behavior.</p></li>
+</ul>
+</section>
+<section id="recognising-contributions">
+<h2>Recognising Contributions<a class="headerlink" href="#recognising-contributions" title="Link to this heading">#</a></h2>
+<p>All contributors will be acknowledged in the <a class="reference external" href="https://github.com/alan-turing-institute/autoemulate/tree/main#contributors">contributors</a> section of the README.</p>
+<p>AutoEmulate follows the <a class="reference external" href="https://github.com/kentcdodds/all-contributors#emoji-key">all-contributors</a> specifications. The all-contributors bot usage is described <a class="reference external" href="https://allcontributors.org/docs/en/bot/usage">here</a>.</p>
+<p>To add yourself or someone else as a contributor, comment on the relevant Issue or Pull Request with the following:</p>
+<blockquote>
+<div><p>&#64;all-contributors please add username for contribution1, contribution2</p>
+</div></blockquote>
+<p>You can see the <a class="reference external" href="https://allcontributors.org/docs/en/emoji-key">Emoji Key (Contribution Types Reference)</a> for a list of valid <contribution> types and examples of how this command can be run in <a class="reference external" href="https://github.com/alan-turing-institute/autoemulate/issues/94">this issue</a>. The bot will then create a Pull Request to add the contributor and reply with the pull request details.</p>
+<p><strong>PLEASE NOTE: Only one contributor can be added with the bot at a time!</strong> Add each contributor in turn, merge the pull request and delete the branch (<code class="docutils literal notranslate"><span class="pre">all-contributors/add-&lt;username&gt;</span></code>) before adding another one. Otherwise, you can end up with dreaded <a class="reference external" href="https://help.github.com/articles/about-merge-conflicts">merge conflicts</a>. Therefore, please check the open pull requests first to make sure there aren’t any <a class="reference external" href="https://github.com/alan-turing-institute/autoemulate/pulls/app%2Fallcontributors">open requests from the bot</a> before adding another.</p>
+<p>What happens if you accidentally run the bot before the previous run was merged and you got those pesky merge conflicts? (Don’t feel bad, we have all done it! 🙈) Simply close the pull request and delete the branch (<code class="docutils literal notranslate"><span class="pre">all-contributors/add-&lt;username&gt;</span></code>). If you are unable to do this for any reason, please <!-- let us know on Slack <link to Slack>--> reach out to us via email or open an issue, and one of our core team members will be very happy to help!</p>
+</section>
+<section id="need-help">
+<h2>Need Help?<a class="headerlink" href="#need-help" title="Link to this heading">#</a></h2>
+<p>If you’re stuck or need assistance:</p>
+<!-- #TODO #148 - Check our [FAQ](<ADD LINK TO FAQ DOCUMENT>) section first. -->
+<ul class="simple">
+<li><p>Reach out <!-- on Slack or --> via email for personalised assistance. (See <a class="reference internal" href="#get-in-touch"><span class="xref myst">Get in touch</span></a> above for links.)</p></li>
+<li><p>Consider pairing up with a another contributor for guidance. <!-- You can always find us in the Slack channel and we're happy to chat! -->Contact us for guidance on this topic</p></li>
+</ul>
+<p><strong>Once again, thank you for considering contributing to AutoEmulate! We hope you enjoy your contributing experience.</strong></p>
+</section>
+<section id="inclusivity">
+<h2>Inclusivity<a class="headerlink" href="#inclusivity" title="Link to this heading">#</a></h2>
+<p>We aim to make AutoEmulate a collaboratively developed project. We, therefore, require that all our members and their contributions <strong>adhere to our <a class="reference external" href="https://github.com/alan-turing-institute/autoemulate/blob/main/CODE_OF_CONDUCT.md">Code of Conduct</a></strong>. Please familiarise yourself with our Code of Conduct that lists the expected behaviours.</p>
+<p>Every contributor is expected to adhere to our Code of Conduct. It outlines our expectations and ensures a safe, respectful environment for everyone.</p>
+<hr class="docutils" />
+<p>These Contributing Guidelines have been adapted from the <a class="reference external" href="https://github.com/the-turing-way/the-turing-way/blob/main/CONTRIBUTING.md#recognising-contributions">Contributing Guidelines</a> of <a class="reference external" href="https://github.com/the-turing-way/the-turing-way">The Turing Way</a>! (License: CC-BY)</p>
+</section>
+<section id="get-in-touch">
+<h2>Get in touch<a class="headerlink" href="#get-in-touch" title="Link to this heading">#</a></h2>
+<p><strong>Email</strong>: For any inquiries, please reach out to lead Developer Martin Stoffel, <a class="reference external" href="mailto:mstoffel&#37;&#52;&#48;turing&#46;ac&#46;uk">mstoffel<span>&#64;</span>turing<span>&#46;</span>ac<span>&#46;</span>uk</a>.</p>
+<!-- The easiest way to get involved with the active development of AutoEmulate is to join our regular community calls. The community calls are currently on a hiatus but if you are interested in participating in the forthcoming community calls, which will start in 2024, you should join our Slack workspace, where conversation about when to hold the community calls in the future will take place. -->
+<!--
+**Slack Workspace**: Join our [AutoEmulate Slack channel](<LINK TO SIGN-UP OR TO THE SLACK TEAM>) for discussions, queries, and community interactions. Send us an email at kwesterling@turing.ac.uk to request an invite.
+-->
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./community"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Community</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="contributing-emulators.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Contributing Emulators</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#important-resources">Important Resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-contribute">How to Contribute</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-submit-changes">How to Submit Changes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fork-the-repository">1. Fork the Repository</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#make-changes">2. Make Changes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#commit-and-push">3. Commit and Push</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#open-a-pull-request">4. Open a Pull Request</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#first-timers-corner">First-timers’ Corner</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reporting-bugs">Reporting Bugs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recognising-contributions">Recognising Contributions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#need-help">Need Help?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inclusivity">Inclusivity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-in-touch">Get in touch</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Alan Turing Institute
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  Copyright &copy; 2025
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

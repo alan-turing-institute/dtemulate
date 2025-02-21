@@ -1,0 +1,1115 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>autoemulate.compare &#8212; AutoEmulate: A package for semi-automated emulation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=7f8ff830"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/autoemulate/compare';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/AE_logo_final.png" class="logo__image only-light" alt="AutoEmulate: A package for semi-automated emulation - Home"/>
+    <script>document.write(`<img src="../../_static/AE_logo_final.png" class="logo__image only-dark" alt="AutoEmulate: A package for semi-automated emulation - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../index.html">
+                    Welcome to AutoEmulate
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../getting-started/index.html">Getting started</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../getting-started/installation.html">Installation instructions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../getting-started/quickstart.html">Quickstart</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/01_start.html">A deeper dive into <code class="docutils literal notranslate"><span class="pre">AutoEmulate</span></code></a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/02_speed.html">Minimising computation time</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../community/index.html">Community</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../community/contributing.html">Contributing to AutoEmulate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../community/contributing-emulators.html">Contributing Emulators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../community/contributing-docs.html">Contributing to the Docs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../community/release.html">Releasing AutoEmulate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../community/code-of-conduct.html">Code of Conduct</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../community/faq/index.html">Frequently Asked Questions</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../community/faq/faq-users.html">First-Time Users’ Frequently Asked Questions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../community/faq/faq-contributors.html">First-Time Contributors’ Frequently Asked Questions</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../reference/index.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/compare.html">autoemulate.compare</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/datasets.html">autoemulate.datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/history_matching.html"><code class="docutils literal notranslate"><span class="pre">history_matching()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/sensitivity_analysis.html">autoemulate.sensitivity_analysis</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../reference/simulations/index.html">autoemulate.simulations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/simulations/projectile.html">autoemulate.simulations.projectile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/simulations/epidemic.html">autoemulate.simulations.epidemic</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../reference/emulators/index.html">autoemulate.emulators</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/emulators/rbf.html">autoemulate.emulators.radial_basis_functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/emulators/polynomials.html">autoemulate.emulators.polynomials</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/emulators/random_forest.html">autoemulate.emulators.random_forest</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/emulators/support_vector_machines.html">autoemulate.emulators.support_vector_machines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/emulators/gradient_boosting.html">autoemulate.emulators.gradient_boosting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/emulators/light_gbm.html">autoemulate.emulators.light_gbm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/emulators/conditional_neural_process.html">autoemulate.emulators.conditional_neural_process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/emulators/conditional_neural_process_attn.html">autoemulate.emulators.conditional_neural_process_attn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/emulators/gaussian_process.html">autoemulate.emulators.gaussian_process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/emulators/gaussian_process_mt.html">autoemulate.emulators.gaussian_process_mt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/emulators/neural_net_sk.html">autoemulate.emulators.neural_net_sk</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../reference/emulators/gaussian_process_sklearn.html">autoemulate.emulators.gaussian_process</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/alan-turing-institute/autoemulate" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/alan-turing-institute/autoemulate/issues/new?title=Issue%20on%20page%20%2F_modules/autoemulate/compare.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for autoemulate.compare</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.base</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseEstimator</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.decomposition</span><span class="w"> </span><span class="kn">import</span> <span class="n">PCA</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">KFold</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.utils.validation</span><span class="w"> </span><span class="kn">import</span> <span class="n">check_X_y</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tqdm.autonotebook</span><span class="w"> </span><span class="kn">import</span> <span class="n">tqdm</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">autoemulate.cross_validate</span><span class="w"> </span><span class="kn">import</span> <span class="n">_run_cv</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">autoemulate.cross_validate</span><span class="w"> </span><span class="kn">import</span> <span class="n">_sum_cv</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">autoemulate.cross_validate</span><span class="w"> </span><span class="kn">import</span> <span class="n">_sum_cvs</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">autoemulate.data_splitting</span><span class="w"> </span><span class="kn">import</span> <span class="n">_split_data</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">autoemulate.emulators</span><span class="w"> </span><span class="kn">import</span> <span class="n">model_registry</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">autoemulate.hyperparam_searching</span><span class="w"> </span><span class="kn">import</span> <span class="n">_optimize_params</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">autoemulate.logging_config</span><span class="w"> </span><span class="kn">import</span> <span class="n">_configure_logging</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">autoemulate.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">METRIC_REGISTRY</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">autoemulate.model_processing</span><span class="w"> </span><span class="kn">import</span> <span class="n">_process_models</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">autoemulate.plotting</span><span class="w"> </span><span class="kn">import</span> <span class="n">_plot_cv</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">autoemulate.plotting</span><span class="w"> </span><span class="kn">import</span> <span class="n">_plot_model</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">autoemulate.printing</span><span class="w"> </span><span class="kn">import</span> <span class="n">_print_setup</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">autoemulate.save</span><span class="w"> </span><span class="kn">import</span> <span class="n">ModelSerialiser</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">autoemulate.sensitivity_analysis</span><span class="w"> </span><span class="kn">import</span> <span class="n">_plot_sensitivity_analysis</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">autoemulate.sensitivity_analysis</span><span class="w"> </span><span class="kn">import</span> <span class="n">_sensitivity_analysis</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">autoemulate.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">_check_cv</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">autoemulate.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">_ensure_2d</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">autoemulate.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">_get_full_model_name</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">autoemulate.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">_redirect_warnings</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">autoemulate.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_model_name</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">autoemulate.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_short_model_name</span>
+
+
+<div class="viewcode-block" id="AutoEmulate">
+<a class="viewcode-back" href="../../reference/compare.html#autoemulate.compare.AutoEmulate">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">AutoEmulate</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The AutoEmulate class is the main class of the AutoEmulate package. It is used to set up and compare</span>
+<span class="sd">    different emulator models on a given dataset. It can also be used to summarise and visualise results,</span>
+<span class="sd">    to save and load models and to run sensitivity analysis.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initializes an AutoEmulate object.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">X</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_set_up</span> <span class="o">=</span> <span class="kc">False</span>
+
+<div class="viewcode-block" id="AutoEmulate.setup">
+<a class="viewcode-back" href="../../reference/compare.html#autoemulate.compare.AutoEmulate.setup">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setup</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">X</span><span class="p">,</span>
+        <span class="n">y</span><span class="p">,</span>
+        <span class="n">param_search</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">param_search_type</span><span class="o">=</span><span class="s2">&quot;random&quot;</span><span class="p">,</span>
+        <span class="n">param_search_iters</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+        <span class="n">test_set_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+        <span class="n">scale</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">scaler</span><span class="o">=</span><span class="n">StandardScaler</span><span class="p">(),</span>
+        <span class="n">reduce_dim</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">dim_reducer</span><span class="o">=</span><span class="n">PCA</span><span class="p">(),</span>
+        <span class="n">cross_validator</span><span class="o">=</span><span class="n">KFold</span><span class="p">(</span>
+            <span class="n">n_splits</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mf">1e5</span><span class="p">)</span>
+        <span class="p">),</span>
+        <span class="n">n_jobs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">models</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">log_to_file</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">print_setup</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets up the automatic emulation.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        X : array-like, shape (n_samples, n_features)</span>
+<span class="sd">            Simulation input.</span>
+<span class="sd">        y : array-like, shape (n_samples, n_outputs)</span>
+<span class="sd">            Simulation output.</span>
+<span class="sd">        param_search : bool</span>
+<span class="sd">            Whether to perform hyperparameter search over predifined parameter grids.</span>
+<span class="sd">        param_search_type : str</span>
+<span class="sd">            Type of hyperparameter search to perform. Currently only &quot;random&quot;, which picks random parameter settings</span>
+<span class="sd">            from a grid param_search_iters times.</span>
+<span class="sd">        param_search_iters : int</span>
+<span class="sd">            Number of parameter settings that are sampled. Only used if</span>
+<span class="sd">            param_search=True.</span>
+<span class="sd">        scale : bool, default=True</span>
+<span class="sd">            Whether to scale features/parameters in X before fitting the models using a scaler.</span>
+<span class="sd">        scaler : sklearn.preprocessing.StandardScaler</span>
+<span class="sd">            Scaler to use. Defaults to StandardScaler. Can be any sklearn scaler.</span>
+<span class="sd">        reduce_dim : bool, default=False</span>
+<span class="sd">            Whether to reduce the dimensionality of the data before fitting the models.</span>
+<span class="sd">        dim_reducer : sklearn.decomposition object</span>
+<span class="sd">            Dimensionality reduction method to use. Can be any method in `sklearn.decomposition`</span>
+<span class="sd">            with an `n_components` parameter. Defaults to PCA. Specify n_components like so:</span>
+<span class="sd">            `dim_reducer=PCA(n_components=2)` for choosing 2 principal components, or</span>
+<span class="sd">            `dim_reducer=PCA(n_components=0.95)` for choosing the number of components that</span>
+<span class="sd">            explain 95% of the variance. Other methods can have slightly different n_components</span>
+<span class="sd">            parameter inputs, see the sklearn documentation for more details. Dimension reduction</span>
+<span class="sd">            is always performed after scaling.</span>
+<span class="sd">        cross_validator : sklearn.model_selection object</span>
+<span class="sd">            Cross-validation strategy to use. Defaults to KFold with 5 splits and shuffle=True.</span>
+<span class="sd">            Can be any object in `sklearn.model_selection` that generates train/test indices.</span>
+<span class="sd">        n_jobs : int</span>
+<span class="sd">            Number of jobs to run in parallel. `None` means 1, `-1` means using all processors.</span>
+<span class="sd">        models : list</span>
+<span class="sd">            str or list of model names. If None, uses a set of core models.</span>
+<span class="sd">        verbose : int</span>
+<span class="sd">            Verbosity level. Can be 0, 1, or 2.</span>
+<span class="sd">        log_to_file : bool</span>
+<span class="sd">            Whether to log to file.</span>
+<span class="sd">        print_setup : bool</span>
+<span class="sd">            Whether to print the setup of the AutoEmulate object.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model_registry</span> <span class="o">=</span> <span class="n">model_registry</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_check_input</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">test_set_size</span> <span class="o">=</span> <span class="n">test_set_size</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">train_idxs</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">test_idxs</span> <span class="o">=</span> <span class="n">_split_data</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">test_set_size</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model_names</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_registry</span><span class="o">.</span><span class="n">get_model_names</span><span class="p">(</span><span class="n">models</span><span class="p">,</span> <span class="n">is_core</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">models</span> <span class="o">=</span> <span class="n">_process_models</span><span class="p">(</span>
+            <span class="n">model_registry</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model_registry</span><span class="p">,</span>
+            <span class="n">model_names</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model_names</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span>
+            <span class="n">y</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">,</span>
+            <span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">,</span>
+            <span class="n">scaler</span><span class="o">=</span><span class="n">scaler</span><span class="p">,</span>
+            <span class="n">reduce_dim</span><span class="o">=</span><span class="n">reduce_dim</span><span class="p">,</span>
+            <span class="n">dim_reducer</span><span class="o">=</span><span class="n">dim_reducer</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">metrics</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_metrics</span><span class="p">(</span><span class="n">METRIC_REGISTRY</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cross_validator</span> <span class="o">=</span> <span class="n">_check_cv</span><span class="p">(</span><span class="n">cross_validator</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">param_search</span> <span class="o">=</span> <span class="n">param_search</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">search_type</span> <span class="o">=</span> <span class="n">param_search_type</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">param_search_iters</span> <span class="o">=</span> <span class="n">param_search_iters</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scale</span> <span class="o">=</span> <span class="n">scale</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scaler</span> <span class="o">=</span> <span class="n">scaler</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_jobs</span> <span class="o">=</span> <span class="n">n_jobs</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="n">_configure_logging</span><span class="p">(</span><span class="n">log_to_file</span><span class="p">,</span> <span class="n">verbose</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">is_set_up</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dim_reducer</span> <span class="o">=</span> <span class="n">dim_reducer</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reduce_dim</span> <span class="o">=</span> <span class="n">reduce_dim</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cv_results</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="k">if</span> <span class="n">print_setup</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">print_setup</span><span class="p">()</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_check_input</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Checks and possibly converts the input data.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        X : array-like, shape (n_samples, n_features)</span>
+<span class="sd">            Simulation input.</span>
+<span class="sd">        y : array-like, shape (n_samples, n_outputs)</span>
+<span class="sd">            Simulation output.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        X_converted : array-like, shape (n_samples, n_features)</span>
+<span class="sd">            Simulation input.</span>
+<span class="sd">        y_converted : array-like, shape (n_samples, n_outputs)</span>
+<span class="sd">            Simulation output.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">check_X_y</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">multi_output</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">y_numeric</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;float32&quot;</span><span class="p">)</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float32&quot;</span><span class="p">)</span>  <span class="c1"># needed for pytorch models</span>
+        <span class="k">return</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_metrics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">METRIC_REGISTRY</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get metrics from REGISTRY</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        METRIC_REGISTRY : dict</span>
+<span class="sd">            Registry of metrics.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        List[Callable]</span>
+<span class="sd">            List of metric functions.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">metric</span> <span class="k">for</span> <span class="n">metric</span> <span class="ow">in</span> <span class="n">METRIC_REGISTRY</span><span class="o">.</span><span class="n">values</span><span class="p">()]</span>
+
+<div class="viewcode-block" id="AutoEmulate.compare">
+<a class="viewcode-back" href="../../reference/compare.html#autoemulate.compare.AutoEmulate.compare">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">compare</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Compares models using cross-validation, with the option</span>
+<span class="sd">        to perform hyperparameter search. self.setup() must be run first.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        self.best_model : object</span>
+<span class="sd">            Emulator with the highest cross-validation R2 score.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_set_up</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Must run setup() before compare()&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Freshly initialise scores dataframe when running compare()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scores_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+            <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;model&quot;</span><span class="p">,</span> <span class="s2">&quot;short&quot;</span><span class="p">,</span> <span class="s2">&quot;metric&quot;</span><span class="p">,</span> <span class="s2">&quot;fold&quot;</span><span class="p">,</span> <span class="s2">&quot;score&quot;</span><span class="p">]</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="s2">&quot;object&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;short&quot;</span><span class="p">:</span> <span class="s2">&quot;object&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;metric&quot;</span><span class="p">:</span> <span class="s2">&quot;object&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;fold&quot;</span><span class="p">:</span> <span class="s2">&quot;int64&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;score&quot;</span><span class="p">:</span> <span class="s2">&quot;float64&quot;</span><span class="p">,</span>
+            <span class="p">}</span>
+        <span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">param_search</span><span class="p">:</span>
+            <span class="n">pb_text</span> <span class="o">=</span> <span class="s2">&quot;Optimising and cross-validating&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">pb_text</span> <span class="o">=</span> <span class="s2">&quot;Cross-validating&quot;</span>
+
+        <span class="k">with</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">total</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">models</span><span class="p">),</span> <span class="n">desc</span><span class="o">=</span><span class="s2">&quot;Initializing&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">pbar</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">model</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">models</span><span class="p">):</span>
+                <span class="n">model_name</span> <span class="o">=</span> <span class="n">get_model_name</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+                <span class="n">pbar</span><span class="o">.</span><span class="n">set_description</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">pb_text</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="k">with</span> <span class="n">_redirect_warnings</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">):</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="c1"># hyperparameter search</span>
+                        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">param_search</span><span class="p">:</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">models</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">_optimize_params</span><span class="p">(</span>
+                                <span class="n">X</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">train_idxs</span><span class="p">],</span>
+                                <span class="n">y</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">train_idxs</span><span class="p">],</span>
+                                <span class="n">cv</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cross_validator</span><span class="p">,</span>
+                                <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span>
+                                <span class="n">search_type</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">search_type</span><span class="p">,</span>
+                                <span class="n">niter</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">param_search_iters</span><span class="p">,</span>
+                                <span class="n">param_space</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                                <span class="n">n_jobs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">n_jobs</span><span class="p">,</span>
+                                <span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span>
+                            <span class="p">)</span>
+                        <span class="c1"># run cross validation</span>
+                        <span class="n">fitted_model</span><span class="p">,</span> <span class="n">cv_results</span> <span class="o">=</span> <span class="n">_run_cv</span><span class="p">(</span>
+                            <span class="n">X</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">train_idxs</span><span class="p">],</span>
+                            <span class="n">y</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">train_idxs</span><span class="p">],</span>
+                            <span class="n">cv</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cross_validator</span><span class="p">,</span>
+                            <span class="n">model</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">models</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+                            <span class="n">metrics</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">metrics</span><span class="p">,</span>
+                            <span class="n">n_jobs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">n_jobs</span><span class="p">,</span>
+                            <span class="n">logger</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">,</span>
+                        <span class="p">)</span>
+                    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span>
+                            <span class="sa">f</span><span class="s2">&quot;Error cross-validating model </span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s2">&quot;</span>
+                        <span class="p">)</span>
+                        <span class="k">continue</span>
+                    <span class="k">finally</span><span class="p">:</span>
+                        <span class="n">pbar</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">models</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">fitted_model</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">cv_results</span><span class="p">[</span><span class="n">model_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">cv_results</span>
+
+        <span class="c1"># get best model</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">best_model</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_model</span><span class="p">(</span><span class="n">rank</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;r2&quot;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">best_model</span></div>
+
+
+<div class="viewcode-block" id="AutoEmulate.get_model">
+<a class="viewcode-back" href="../../reference/compare.html#autoemulate.compare.AutoEmulate.get_model">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">rank</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;r2&quot;</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get a fitted model based on its name or rank in the comparison.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        name : str</span>
+<span class="sd">            Name of the model to return. Can be full name or short name, e.g. &quot;GaussianProcess&quot; or &quot;gp&quot;.</span>
+<span class="sd">            Short name abbreviations are the uppercase first letter of each word in the full name (e.g. &quot;GaussianProcess&quot; -&gt; &quot;gp&quot;).</span>
+<span class="sd">        rank : int</span>
+<span class="sd">            Rank of the model to return. Defaults to 1, which is the best model, 2 is the second best, etc.</span>
+<span class="sd">        metric : str</span>
+<span class="sd">            Metric to use for determining the best model.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        model : object</span>
+<span class="sd">            Model fitted on full data.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># get model by name</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Name must be a string&quot;</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">models</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">get_model_name</span><span class="p">(</span><span class="n">model</span><span class="p">)</span> <span class="o">==</span> <span class="n">name</span> <span class="ow">or</span> <span class="n">get_short_model_name</span><span class="p">(</span><span class="n">model</span><span class="p">)</span> <span class="o">==</span> <span class="n">name</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="n">model</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Model </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> not found&quot;</span><span class="p">)</span>
+
+        <span class="c1"># check that comparison has been run</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;cv_results&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">name</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Must run compare() before get_model()&quot;</span><span class="p">)</span>
+
+        <span class="c1"># get model by rank</span>
+        <span class="n">means</span> <span class="o">=</span> <span class="n">_sum_cvs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cv_results</span><span class="p">,</span> <span class="n">metric</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">rank</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">means</span><span class="p">))</span> <span class="ow">or</span> <span class="p">(</span><span class="n">rank</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Rank must be &gt;= 1 and &lt;= </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">means</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">chosen_model_name</span> <span class="o">=</span> <span class="n">means</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">rank</span> <span class="o">-</span> <span class="mi">1</span><span class="p">][</span><span class="s2">&quot;model&quot;</span><span class="p">]</span>
+
+        <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">models</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">get_model_name</span><span class="p">(</span><span class="n">model</span><span class="p">)</span> <span class="o">==</span> <span class="n">chosen_model_name</span><span class="p">:</span>
+                <span class="n">chosen_model</span> <span class="o">=</span> <span class="n">model</span>
+                <span class="k">break</span>
+
+        <span class="c1"># check_is_fitted(chosen_model)</span>
+        <span class="k">return</span> <span class="n">chosen_model</span></div>
+
+
+<div class="viewcode-block" id="AutoEmulate.refit">
+<a class="viewcode-back" href="../../reference/compare.html#autoemulate.compare.AutoEmulate.refit">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">refit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Refits model on full data. This is useful, as `compare()` runs only on the training data.</span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        model : model to refit.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        model : object</span>
+<span class="sd">            Refitted model.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;X&quot;</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Must run setup() before refit()&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">model</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Model must be provided&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">BaseEstimator</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="s2">&quot;Model must be provided and should be a scikit-learn estimator&quot;</span>
+                <span class="p">)</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">model</span></div>
+
+
+<div class="viewcode-block" id="AutoEmulate.save">
+<a class="viewcode-back" href="../../reference/compare.html#autoemulate.compare.AutoEmulate.save">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Saves model to disk.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        model : sklearn model, optional</span>
+<span class="sd">            Model to save. If None, saves the model with the best</span>
+<span class="sd">            average cv score.</span>
+<span class="sd">        path : str</span>
+<span class="sd">            Path to save the model.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;best_model&quot;</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Must run compare() before save()&quot;</span><span class="p">)</span>
+
+        <span class="n">serialiser</span> <span class="o">=</span> <span class="n">ModelSerialiser</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">model</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">serialiser</span><span class="o">.</span><span class="n">_save_model</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">best_model</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">BaseEstimator</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="s2">&quot;Model must be provided and should be a scikit-learn estimator&quot;</span>
+                <span class="p">)</span>
+        <span class="n">serialiser</span><span class="o">.</span><span class="n">_save_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="AutoEmulate.load">
+<a class="viewcode-back" href="../../reference/compare.html#autoemulate.compare.AutoEmulate.load">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Loads a model from disk.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        path : str</span>
+<span class="sd">            Path to model.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">path</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Path must be provided&quot;</span><span class="p">)</span>
+        <span class="n">serialiser</span> <span class="o">=</span> <span class="n">ModelSerialiser</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">serialiser</span><span class="o">.</span><span class="n">_load_model</span><span class="p">(</span><span class="n">path</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="AutoEmulate.print_setup">
+<a class="viewcode-back" href="../../reference/compare.html#autoemulate.compare.AutoEmulate.print_setup">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">print_setup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Print the parameters of the AutoEmulate object.&quot;&quot;&quot;</span>
+        <span class="n">_print_setup</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="AutoEmulate.summarise_cv">
+<a class="viewcode-back" href="../../reference/compare.html#autoemulate.compare.AutoEmulate.summarise_cv">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">summarise_cv</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sort_by</span><span class="o">=</span><span class="s2">&quot;r2&quot;</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Summarise cv results.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        model : str, optional</span>
+<span class="sd">            Name of the model to get cv results for. If None, summarises results for all models.</span>
+<span class="sd">        sort_by : str, optional</span>
+<span class="sd">            The metric to sort by. Default is &quot;r2&quot;, can also be &quot;rmse&quot;.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        pandas.DataFrame</span>
+<span class="sd">            DataFrame summarising cv results.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">model_name</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">_get_full_model_name</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_names</span><span class="p">)</span> <span class="k">if</span> <span class="n">model</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">None</span>
+        <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">model_name</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">cv</span> <span class="o">=</span> <span class="n">_sum_cvs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cv_results</span><span class="p">,</span> <span class="n">sort_by</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">cv</span> <span class="o">=</span> <span class="n">_sum_cv</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cv_results</span><span class="p">[</span><span class="n">model_name</span><span class="p">])</span>
+
+        <span class="k">return</span> <span class="n">cv</span></div>
+
+
+    <span class="n">summarize_cv</span> <span class="o">=</span> <span class="n">summarise_cv</span>  <span class="c1"># alias</span>
+
+<div class="viewcode-block" id="AutoEmulate.plot_cv">
+<a class="viewcode-back" href="../../reference/compare.html#autoemulate.compare.AutoEmulate.plot_cv">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">plot_cv</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">model</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">style</span><span class="o">=</span><span class="s2">&quot;Xy&quot;</span><span class="p">,</span>
+        <span class="n">n_cols</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+        <span class="n">figsize</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">output_index</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">input_index</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Plots the results of the cross-validation.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        model : str</span>
+<span class="sd">            Name of the model to plot. If None, plots best folds of each models.</span>
+<span class="sd">            If a model name is specified, plots all folds of that model.</span>
+<span class="sd">        style : str, optional</span>
+<span class="sd">            The type of plot to draw:</span>
+<span class="sd">            &quot;Xy&quot; for plotting observed and predicted values vs. features, including 2σ error bands where available (default).</span>
+<span class="sd">            &quot;actual_vs_predicted&quot; for plotting observed values (y-axis) vs. the predicted values (x-axis).</span>
+<span class="sd">            &quot;residual_vs_predicted&quot; for plotting the residuals, i.e. difference between observed and predicted values, (y-axis) vs. the predicted values (x-axis).</span>
+<span class="sd">        n_cols : int</span>
+<span class="sd">            Number of columns in the plot grid.</span>
+<span class="sd">        figsize : tuple, optional</span>
+<span class="sd">            Overrides the default figure size, in inches, e.g. (6, 4).</span>
+<span class="sd">        output_index : int</span>
+<span class="sd">            Index of the output to plot. Default is 0. Can be a single index or a list of indices.</span>
+<span class="sd">        input_index : int</span>
+<span class="sd">            Index of the input to plot. Default is 0. Can be a single index or a list of indices.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">model_name</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">_get_full_model_name</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_names</span><span class="p">)</span> <span class="k">if</span> <span class="n">model</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">None</span>
+        <span class="p">)</span>
+        <span class="n">figure</span> <span class="o">=</span> <span class="n">_plot_cv</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cv_results</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">train_idxs</span><span class="p">],</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">train_idxs</span><span class="p">],</span>
+            <span class="n">model_name</span><span class="o">=</span><span class="n">model_name</span><span class="p">,</span>
+            <span class="n">n_cols</span><span class="o">=</span><span class="n">n_cols</span><span class="p">,</span>
+            <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span>
+            <span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">,</span>
+            <span class="n">output_index</span><span class="o">=</span><span class="n">output_index</span><span class="p">,</span>
+            <span class="n">input_index</span><span class="o">=</span><span class="n">input_index</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">figure</span></div>
+
+
+<div class="viewcode-block" id="AutoEmulate.evaluate">
+<a class="viewcode-back" href="../../reference/compare.html#autoemulate.compare.AutoEmulate.evaluate">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">multioutput</span><span class="o">=</span><span class="s2">&quot;uniform_average&quot;</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Evaluates the model on the test set.</span>
+
+<span class="sd">        Test set size can be specified in `setup()` with `test_set_size`.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        model : object</span>
+<span class="sd">            Fitted model</span>
+<span class="sd">        multioutput : str, optional</span>
+<span class="sd">            Defines aggregating of multiple output scores.</span>
+<span class="sd">            &#39;raw_values&#39; : returns scores for each target</span>
+<span class="sd">            &#39;uniform_average&#39; : scores are averaged uniformly</span>
+<span class="sd">            &#39;variance_weighted&#39; : scores are averaged weighted by their individual variances</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        scores_df : pandas.DataFrame</span>
+<span class="sd">            Dataframe containing the model scores on the test set.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">model</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Model must be provided&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">BaseEstimator</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Model should be a fitted model&quot;</span><span class="p">)</span>
+
+        <span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">test_idxs</span><span class="p">])</span>
+        <span class="n">y_true</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">test_idxs</span><span class="p">]</span>
+
+        <span class="n">scores</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">metric</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">metrics</span><span class="p">:</span>
+            <span class="n">scores</span><span class="p">[</span><span class="n">metric</span><span class="o">.</span><span class="vm">__name__</span><span class="p">]</span> <span class="o">=</span> <span class="n">metric</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">multioutput</span><span class="o">=</span><span class="n">multioutput</span><span class="p">)</span>
+
+        <span class="c1"># make sure scores are lists/arrays</span>
+        <span class="n">scores</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="n">k</span><span class="p">:</span> <span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">))</span> <span class="k">else</span> <span class="n">v</span>
+            <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">scores</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+        <span class="p">}</span>
+
+        <span class="n">scores_df</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span>
+            <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;y</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">scores</span><span class="p">[</span><span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">scores</span><span class="p">))]))])</span>
+            <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">short</span><span class="o">=</span><span class="n">get_short_model_name</span><span class="p">(</span><span class="n">model</span><span class="p">))</span>
+            <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="n">get_model_name</span><span class="p">(</span><span class="n">model</span><span class="p">))</span>
+            <span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;model&quot;</span><span class="p">,</span> <span class="s2">&quot;short&quot;</span><span class="p">,</span> <span class="s2">&quot;target&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">scores</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+
+        <span class="c1"># if multioutput is not raw_values, drop the target column</span>
+        <span class="k">if</span> <span class="n">multioutput</span> <span class="o">!=</span> <span class="s2">&quot;raw_values&quot;</span><span class="p">:</span>
+            <span class="n">scores_df</span> <span class="o">=</span> <span class="n">scores_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;target&quot;</span><span class="p">])</span>
+
+        <span class="k">return</span> <span class="n">scores_df</span></div>
+
+
+<div class="viewcode-block" id="AutoEmulate.plot_eval">
+<a class="viewcode-back" href="../../reference/compare.html#autoemulate.compare.AutoEmulate.plot_eval">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">plot_eval</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">model</span><span class="p">,</span>
+        <span class="n">style</span><span class="o">=</span><span class="s2">&quot;Xy&quot;</span><span class="p">,</span>
+        <span class="n">n_cols</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+        <span class="n">figsize</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">output_index</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">input_index</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Visualise model predictive performance on the test set.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        model : object</span>
+<span class="sd">            Fitted model.</span>
+<span class="sd">        style : str, optional</span>
+<span class="sd">            The type of plot to draw:</span>
+<span class="sd">            &quot;Xy&quot; observed and predicted values vs. features, including 2σ error bands where available (default).</span>
+<span class="sd">            &quot;actual_vs_predicted&quot; draws the observed values (y-axis) vs. the predicted values (x-axis) (default).</span>
+<span class="sd">            &quot;residual_vs_predicted&quot; draws the residuals, i.e. difference between observed and predicted values, (y-axis) vs. the predicted values (x-axis).</span>
+<span class="sd">        n_cols : int, optional</span>
+<span class="sd">            Number of columns in the plot grid for multi-output. Default is 2.</span>
+<span class="sd">        output_index : list, int</span>
+<span class="sd">            Index of the output to plot. Either a single index or a list of indices.</span>
+<span class="sd">        input_index : list, int</span>
+<span class="sd">            Index of the input to plot. Either a single index or a list of indices. Only used if style=&quot;Xy&quot;.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">fig</span> <span class="o">=</span> <span class="n">_plot_model</span><span class="p">(</span>
+            <span class="n">model</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">test_idxs</span><span class="p">],</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">test_idxs</span><span class="p">],</span>
+            <span class="n">style</span><span class="p">,</span>
+            <span class="n">n_cols</span><span class="p">,</span>
+            <span class="n">figsize</span><span class="p">,</span>
+            <span class="n">input_index</span><span class="o">=</span><span class="n">input_index</span><span class="p">,</span>
+            <span class="n">output_index</span><span class="o">=</span><span class="n">output_index</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">fig</span></div>
+
+
+<div class="viewcode-block" id="AutoEmulate.sensitivity_analysis">
+<a class="viewcode-back" href="../../reference/compare.html#autoemulate.compare.AutoEmulate.sensitivity_analysis">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">sensitivity_analysis</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">problem</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">N</span><span class="o">=</span><span class="mi">1024</span><span class="p">,</span> <span class="n">conf_level</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span> <span class="n">as_df</span><span class="o">=</span><span class="kc">True</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Perform Sobol sensitivity analysis on a fitted emulator.</span>
+
+<span class="sd">        Sobol sensitivity analysis is a variance-based method that decomposes the variance of the model</span>
+<span class="sd">        output into contributions from individual input parameters and their interactions. It calculates:</span>
+<span class="sd">        - First-order indices (S1): Direct contribution of each input parameter</span>
+<span class="sd">        - Second-order indices (S2): Contribution from pairwise interactions between parameters</span>
+<span class="sd">        - Total-order indices (ST): Total contribution of a parameter, including all its interactions</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        model : object, optional</span>
+<span class="sd">            Fitted model. If None, uses the best model from cross-validation.</span>
+<span class="sd">        problem : dict, optional</span>
+<span class="sd">            The problem definition dictionary. If None, the problem is generated from X using</span>
+<span class="sd">            minimum and maximum values of the features as bounds. The dictionary should contain:</span>
+
+<span class="sd">            - &#39;num_vars&#39;: Number of input variables (int)</span>
+<span class="sd">            - &#39;names&#39;: List of variable names (list of str)</span>
+<span class="sd">            - &#39;bounds&#39;: List of [min, max] bounds for each variable (list of lists)</span>
+<span class="sd">            - &#39;output_names&#39;: Optional list of output names (list of str)</span>
+
+<span class="sd">            Example::</span>
+
+<span class="sd">                problem = {</span>
+<span class="sd">                    &quot;num_vars&quot;: 2,</span>
+<span class="sd">                    &quot;names&quot;: [&quot;x1&quot;, &quot;x2&quot;],</span>
+<span class="sd">                    &quot;bounds&quot;: [[0, 1], [0, 1]],</span>
+<span class="sd">                    &quot;output_names&quot;: [&quot;y1&quot;, &quot;y2&quot;]  # optional</span>
+<span class="sd">                }</span>
+<span class="sd">        N : int, optional</span>
+<span class="sd">            Number of samples to generate for the analysis. Higher values give more accurate</span>
+<span class="sd">            results but increase computation time. Default is 1024.</span>
+<span class="sd">        conf_level : float, optional</span>
+<span class="sd">            Confidence level (between 0 and 1) for calculating confidence intervals of the</span>
+<span class="sd">            sensitivity indices. Default is 0.95 (95% confidence).</span>
+<span class="sd">        as_df : bool, optional</span>
+<span class="sd">            If True, returns results as a long-format pandas DataFrame with columns for</span>
+<span class="sd">            parameters, sensitivity indices, and confidence intervals. If False, returns</span>
+<span class="sd">            the raw SALib results dictionary. Default is True.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        pandas.DataFrame or dict</span>
+<span class="sd">            If as_df=True (default), returns a DataFrame with columns:</span>
+
+<span class="sd">            - &#39;parameter&#39;: Input parameter name</span>
+<span class="sd">            - &#39;output&#39;: Output variable name</span>
+<span class="sd">            - &#39;S1&#39;, &#39;S2&#39;, &#39;ST&#39;: First, second, and total order sensitivity indices</span>
+<span class="sd">            - &#39;S1_conf&#39;, &#39;S2_conf&#39;, &#39;ST_conf&#39;: Confidence intervals for each index</span>
+
+<span class="sd">            If as_df=False, returns the raw SALib results dictionary.</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        The analysis requires N * (2D + 2) model evaluations, where D is the number of input</span>
+<span class="sd">        parameters. For example, with N=1024 and 5 parameters, this requires 12,288 evaluations.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">model</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;best_model&quot;</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Must run compare() before sensitivity_analysis()&quot;</span><span class="p">)</span>
+            <span class="n">model</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">refit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">best_model</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;No model provided, using </span><span class="si">{</span><span class="n">get_model_name</span><span class="p">(</span><span class="n">model</span><span class="p">)</span><span class="si">}</span><span class="s2">, which had the highest average cross-validation score, refitted on full data.&quot;</span>
+            <span class="p">)</span>
+
+        <span class="n">Si</span> <span class="o">=</span> <span class="n">_sensitivity_analysis</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">problem</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">conf_level</span><span class="p">,</span> <span class="n">as_df</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">Si</span></div>
+
+
+<div class="viewcode-block" id="AutoEmulate.plot_sensitivity_analysis">
+<a class="viewcode-back" href="../../reference/compare.html#autoemulate.compare.AutoEmulate.plot_sensitivity_analysis">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">plot_sensitivity_analysis</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">results</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="s2">&quot;S1&quot;</span><span class="p">,</span> <span class="n">n_cols</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Plot the sensitivity analysis results.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">        -----------</span>
+<span class="sd">        results : pd.DataFrame</span>
+<span class="sd">            The results from sobol_results_to_df.</span>
+<span class="sd">        index : str, default &quot;S1&quot;</span>
+<span class="sd">            The type of sensitivity index to plot.</span>
+<span class="sd">            - &quot;S1&quot;: first-order indices</span>
+<span class="sd">            - &quot;S2&quot;: second-order/interaction indices</span>
+<span class="sd">            - &quot;ST&quot;: total-order indices</span>
+<span class="sd">        n_cols : int, optional</span>
+<span class="sd">            The number of columns in the plot. Defaults to 3 if there are 3 or more outputs,</span>
+<span class="sd">            otherwise the number of outputs.</span>
+<span class="sd">        figsize : tuple, optional</span>
+<span class="sd">            Figure size as (width, height) in inches.If None, automatically calculated.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">_plot_sensitivity_analysis</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">n_cols</span><span class="p">,</span> <span class="n">figsize</span><span class="p">)</span></div>
+</div>
+
+</pre></div>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Alan Turing Institute
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  Copyright &copy; 2025
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

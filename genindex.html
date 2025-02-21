@@ -1,0 +1,918 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Index &#8212; AutoEmulate: A package for semi-automated emulation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=7f8ff830"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'genindex';</script>
+    <link rel="index" title="Index" href="#" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/AE_logo_final.png" class="logo__image only-light" alt="AutoEmulate: A package for semi-automated emulation - Home"/>
+    <script>document.write(`<img src="_static/AE_logo_final.png" class="logo__image only-dark" alt="AutoEmulate: A package for semi-automated emulation - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="index.html">
+                    Welcome to AutoEmulate
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="getting-started/index.html">Getting started</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="getting-started/installation.html">Installation instructions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting-started/quickstart.html">Quickstart</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="tutorials/index.html">Tutorials</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/01_start.html">A deeper dive into <code class="docutils literal notranslate"><span class="pre">AutoEmulate</span></code></a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="tutorials/02_speed.html">Minimising computation time</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="community/index.html">Community</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="community/contributing.html">Contributing to AutoEmulate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="community/contributing-emulators.html">Contributing Emulators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="community/contributing-docs.html">Contributing to the Docs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="community/release.html">Releasing AutoEmulate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="community/code-of-conduct.html">Code of Conduct</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="community/faq/index.html">Frequently Asked Questions</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="community/faq/faq-users.html">First-Time Users’ Frequently Asked Questions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="community/faq/faq-contributors.html">First-Time Contributors’ Frequently Asked Questions</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="reference/index.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/compare.html">autoemulate.compare</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/datasets.html">autoemulate.datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/history_matching.html"><code class="docutils literal notranslate"><span class="pre">history_matching()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/sensitivity_analysis.html">autoemulate.sensitivity_analysis</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="reference/simulations/index.html">autoemulate.simulations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/simulations/projectile.html">autoemulate.simulations.projectile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/simulations/epidemic.html">autoemulate.simulations.epidemic</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="reference/emulators/index.html">autoemulate.emulators</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/emulators/rbf.html">autoemulate.emulators.radial_basis_functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/emulators/polynomials.html">autoemulate.emulators.polynomials</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/emulators/random_forest.html">autoemulate.emulators.random_forest</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/emulators/support_vector_machines.html">autoemulate.emulators.support_vector_machines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/emulators/gradient_boosting.html">autoemulate.emulators.gradient_boosting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/emulators/light_gbm.html">autoemulate.emulators.light_gbm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/emulators/conditional_neural_process.html">autoemulate.emulators.conditional_neural_process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/emulators/conditional_neural_process_attn.html">autoemulate.emulators.conditional_neural_process_attn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/emulators/gaussian_process.html">autoemulate.emulators.gaussian_process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/emulators/gaussian_process_mt.html">autoemulate.emulators.gaussian_process_mt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/emulators/neural_net_sk.html">autoemulate.emulators.neural_net_sk</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/emulators/gaussian_process_sklearn.html">autoemulate.emulators.gaussian_process</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/alan-turing-institute/autoemulate" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/alan-turing-institute/autoemulate/issues/new?title=Issue%20on%20page%20%2Fgenindex.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+
+<h1 id="index">Index</h1>
+
+<div class="genindex-jumpbox">
+ <a href="#A"><strong>A</strong></a>
+ | <a href="#C"><strong>C</strong></a>
+ | <a href="#E"><strong>E</strong></a>
+ | <a href="#F"><strong>F</strong></a>
+ | <a href="#G"><strong>G</strong></a>
+ | <a href="#H"><strong>H</strong></a>
+ | <a href="#I"><strong>I</strong></a>
+ | <a href="#L"><strong>L</strong></a>
+ | <a href="#M"><strong>M</strong></a>
+ | <a href="#N"><strong>N</strong></a>
+ | <a href="#O"><strong>O</strong></a>
+ | <a href="#P"><strong>P</strong></a>
+ | <a href="#R"><strong>R</strong></a>
+ | <a href="#S"><strong>S</strong></a>
+ | <a href="#X"><strong>X</strong></a>
+ | <a href="#Y"><strong>Y</strong></a>
+ 
+</div>
+<h2 id="A">A</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference/emulators/conditional_neural_process_attn.html#autoemulate.emulators.conditional_neural_process_attn.AttentiveConditionalNeuralProcess">AttentiveConditionalNeuralProcess (class in autoemulate.emulators.conditional_neural_process_attn)</a>
+</li>
+      <li><a href="reference/compare.html#autoemulate.compare.AutoEmulate">AutoEmulate (class in autoemulate.compare)</a>
+</li>
+      <li>
+    autoemulate.compare
+
+      <ul>
+        <li><a href="reference/compare.html#module-autoemulate.compare">module</a>
+</li>
+      </ul></li>
+      <li>
+    autoemulate.datasets
+
+      <ul>
+        <li><a href="reference/datasets.html#module-autoemulate.datasets">module</a>
+</li>
+      </ul></li>
+      <li>
+    autoemulate.emulators.conditional_neural_process
+
+      <ul>
+        <li><a href="reference/emulators/conditional_neural_process.html#module-autoemulate.emulators.conditional_neural_process">module</a>
+</li>
+      </ul></li>
+      <li>
+    autoemulate.emulators.conditional_neural_process_attn
+
+      <ul>
+        <li><a href="reference/emulators/conditional_neural_process_attn.html#module-autoemulate.emulators.conditional_neural_process_attn">module</a>
+</li>
+      </ul></li>
+      <li>
+    autoemulate.emulators.gaussian_process
+
+      <ul>
+        <li><a href="reference/emulators/gaussian_process.html#module-autoemulate.emulators.gaussian_process">module</a>
+</li>
+      </ul></li>
+      <li>
+    autoemulate.emulators.gaussian_process_mt
+
+      <ul>
+        <li><a href="reference/emulators/gaussian_process_mt.html#module-autoemulate.emulators.gaussian_process_mt">module</a>
+</li>
+      </ul></li>
+      <li>
+    autoemulate.emulators.gaussian_process_sklearn
+
+      <ul>
+        <li><a href="reference/emulators/gaussian_process_sklearn.html#module-autoemulate.emulators.gaussian_process_sklearn">module</a>
+</li>
+      </ul></li>
+      <li>
+    autoemulate.emulators.gradient_boosting
+
+      <ul>
+        <li><a href="reference/emulators/gradient_boosting.html#module-autoemulate.emulators.gradient_boosting">module</a>
+</li>
+      </ul></li>
+      <li>
+    autoemulate.emulators.light_gbm
+
+      <ul>
+        <li><a href="reference/emulators/light_gbm.html#module-autoemulate.emulators.light_gbm">module</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    autoemulate.emulators.neural_net_sk
+
+      <ul>
+        <li><a href="reference/emulators/neural_net_sk.html#module-autoemulate.emulators.neural_net_sk">module</a>
+</li>
+      </ul></li>
+      <li>
+    autoemulate.emulators.polynomials
+
+      <ul>
+        <li><a href="reference/emulators/polynomials.html#module-autoemulate.emulators.polynomials">module</a>
+</li>
+      </ul></li>
+      <li>
+    autoemulate.emulators.radial_basis_functions
+
+      <ul>
+        <li><a href="reference/emulators/rbf.html#module-autoemulate.emulators.radial_basis_functions">module</a>
+</li>
+      </ul></li>
+      <li>
+    autoemulate.emulators.random_forest
+
+      <ul>
+        <li><a href="reference/emulators/random_forest.html#module-autoemulate.emulators.random_forest">module</a>
+</li>
+      </ul></li>
+      <li>
+    autoemulate.emulators.support_vector_machines
+
+      <ul>
+        <li><a href="reference/emulators/support_vector_machines.html#module-autoemulate.emulators.support_vector_machines">module</a>
+</li>
+      </ul></li>
+      <li>
+    autoemulate.history_matching
+
+      <ul>
+        <li><a href="reference/history_matching.html#module-autoemulate.history_matching">module</a>
+</li>
+      </ul></li>
+      <li>
+    autoemulate.sensitivity_analysis
+
+      <ul>
+        <li><a href="reference/sensitivity_analysis.html#module-autoemulate.sensitivity_analysis">module</a>
+</li>
+      </ul></li>
+      <li>
+    autoemulate.simulations.epidemic
+
+      <ul>
+        <li><a href="reference/simulations/epidemic.html#module-autoemulate.simulations.epidemic">module</a>
+</li>
+      </ul></li>
+      <li>
+    autoemulate.simulations.projectile
+
+      <ul>
+        <li><a href="reference/simulations/projectile.html#module-autoemulate.simulations.projectile">module</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="C">C</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference/compare.html#autoemulate.compare.AutoEmulate.compare">compare() (AutoEmulate method)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference/emulators/conditional_neural_process.html#autoemulate.emulators.conditional_neural_process.ConditionalNeuralProcess">ConditionalNeuralProcess (class in autoemulate.emulators.conditional_neural_process)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="E">E</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference/compare.html#autoemulate.compare.AutoEmulate.evaluate">evaluate() (AutoEmulate method)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference/simulations/projectile.html#autoemulate.simulations.projectile.event">event() (in module autoemulate.simulations.projectile)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="F">F</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference/simulations/projectile.html#autoemulate.simulations.projectile.f">f() (in module autoemulate.simulations.projectile)</a>
+</li>
+      <li><a href="reference/datasets.html#autoemulate.datasets.fetch_data">fetch_data() (in module autoemulate.datasets)</a>
+</li>
+      <li><a href="reference/emulators/conditional_neural_process.html#autoemulate.emulators.conditional_neural_process.ConditionalNeuralProcess.fit">fit() (ConditionalNeuralProcess method)</a>
+
+      <ul>
+        <li><a href="reference/emulators/gaussian_process.html#autoemulate.emulators.gaussian_process.GaussianProcess.fit">(GaussianProcess method)</a>
+</li>
+        <li><a href="reference/emulators/gaussian_process_mt.html#autoemulate.emulators.gaussian_process_mt.GaussianProcessMT.fit">(GaussianProcessMT method)</a>
+</li>
+        <li><a href="reference/emulators/gaussian_process_sklearn.html#autoemulate.emulators.gaussian_process_sklearn.GaussianProcessSklearn.fit">(GaussianProcessSklearn method)</a>
+</li>
+        <li><a href="reference/emulators/gradient_boosting.html#autoemulate.emulators.gradient_boosting.GradientBoosting.fit">(GradientBoosting method)</a>
+</li>
+        <li><a href="reference/emulators/light_gbm.html#autoemulate.emulators.light_gbm.LightGBM.fit">(LightGBM method)</a>
+</li>
+        <li><a href="reference/emulators/neural_net_sk.html#autoemulate.emulators.neural_net_sk.NeuralNetSk.fit">(NeuralNetSk method)</a>
+</li>
+        <li><a href="reference/emulators/rbf.html#autoemulate.emulators.radial_basis_functions.RadialBasisFunctions.fit">(RadialBasisFunctions method)</a>
+</li>
+        <li><a href="reference/emulators/random_forest.html#autoemulate.emulators.random_forest.RandomForest.fit">(RandomForest method)</a>
+</li>
+        <li><a href="reference/emulators/polynomials.html#autoemulate.emulators.polynomials.SecondOrderPolynomial.fit">(SecondOrderPolynomial method)</a>
+</li>
+        <li><a href="reference/emulators/support_vector_machines.html#autoemulate.emulators.support_vector_machines.SupportVectorMachines.fit">(SupportVectorMachines method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="G">G</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference/emulators/gaussian_process.html#autoemulate.emulators.gaussian_process.GaussianProcess">GaussianProcess (class in autoemulate.emulators.gaussian_process)</a>
+</li>
+      <li><a href="reference/emulators/gaussian_process_mt.html#autoemulate.emulators.gaussian_process_mt.GaussianProcessMT">GaussianProcessMT (class in autoemulate.emulators.gaussian_process_mt)</a>
+</li>
+      <li><a href="reference/emulators/gaussian_process_sklearn.html#autoemulate.emulators.gaussian_process_sklearn.GaussianProcessSklearn">GaussianProcessSklearn (class in autoemulate.emulators.gaussian_process_sklearn)</a>
+</li>
+      <li><a href="reference/emulators/gaussian_process.html#autoemulate.emulators.gaussian_process.GaussianProcess.get_grid_params">get_grid_params() (GaussianProcess method)</a>
+
+      <ul>
+        <li><a href="reference/emulators/gaussian_process_mt.html#autoemulate.emulators.gaussian_process_mt.GaussianProcessMT.get_grid_params">(GaussianProcessMT method)</a>
+</li>
+        <li><a href="reference/emulators/gaussian_process_sklearn.html#autoemulate.emulators.gaussian_process_sklearn.GaussianProcessSklearn.get_grid_params">(GaussianProcessSklearn method)</a>
+</li>
+        <li><a href="reference/emulators/gradient_boosting.html#autoemulate.emulators.gradient_boosting.GradientBoosting.get_grid_params">(GradientBoosting method)</a>
+</li>
+        <li><a href="reference/emulators/light_gbm.html#autoemulate.emulators.light_gbm.LightGBM.get_grid_params">(LightGBM method)</a>
+</li>
+        <li><a href="reference/emulators/neural_net_sk.html#autoemulate.emulators.neural_net_sk.NeuralNetSk.get_grid_params">(NeuralNetSk method)</a>
+</li>
+        <li><a href="reference/emulators/rbf.html#autoemulate.emulators.radial_basis_functions.RadialBasisFunctions.get_grid_params">(RadialBasisFunctions method)</a>
+</li>
+        <li><a href="reference/emulators/random_forest.html#autoemulate.emulators.random_forest.RandomForest.get_grid_params">(RandomForest method)</a>
+</li>
+        <li><a href="reference/emulators/polynomials.html#autoemulate.emulators.polynomials.SecondOrderPolynomial.get_grid_params">(SecondOrderPolynomial method)</a>
+</li>
+        <li><a href="reference/emulators/support_vector_machines.html#autoemulate.emulators.support_vector_machines.SupportVectorMachines.get_grid_params">(SupportVectorMachines method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference/compare.html#autoemulate.compare.AutoEmulate.get_model">get_model() (AutoEmulate method)</a>
+</li>
+      <li><a href="reference/emulators/gradient_boosting.html#autoemulate.emulators.gradient_boosting.GradientBoosting">GradientBoosting (class in autoemulate.emulators.gradient_boosting)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="H">H</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference/history_matching.html#autoemulate.history_matching.history_matching">history_matching() (in module autoemulate.history_matching)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="I">I</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference/emulators/conditional_neural_process.html#autoemulate.emulators.conditional_neural_process.ConditionalNeuralProcess.input_dim_">input_dim_ (ConditionalNeuralProcess attribute)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="L">L</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference/emulators/light_gbm.html#autoemulate.emulators.light_gbm.LightGBM">LightGBM (class in autoemulate.emulators.light_gbm)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference/compare.html#autoemulate.compare.AutoEmulate.load">load() (AutoEmulate method)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="M">M</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference/emulators/conditional_neural_process.html#autoemulate.emulators.conditional_neural_process.ConditionalNeuralProcess.model_">model_ (ConditionalNeuralProcess attribute)</a>
+</li>
+      <li>
+    module
+
+      <ul>
+        <li><a href="reference/compare.html#module-autoemulate.compare">autoemulate.compare</a>
+</li>
+        <li><a href="reference/datasets.html#module-autoemulate.datasets">autoemulate.datasets</a>
+</li>
+        <li><a href="reference/emulators/conditional_neural_process.html#module-autoemulate.emulators.conditional_neural_process">autoemulate.emulators.conditional_neural_process</a>
+</li>
+        <li><a href="reference/emulators/conditional_neural_process_attn.html#module-autoemulate.emulators.conditional_neural_process_attn">autoemulate.emulators.conditional_neural_process_attn</a>
+</li>
+        <li><a href="reference/emulators/gaussian_process.html#module-autoemulate.emulators.gaussian_process">autoemulate.emulators.gaussian_process</a>
+</li>
+        <li><a href="reference/emulators/gaussian_process_mt.html#module-autoemulate.emulators.gaussian_process_mt">autoemulate.emulators.gaussian_process_mt</a>
+</li>
+        <li><a href="reference/emulators/gaussian_process_sklearn.html#module-autoemulate.emulators.gaussian_process_sklearn">autoemulate.emulators.gaussian_process_sklearn</a>
+</li>
+        <li><a href="reference/emulators/gradient_boosting.html#module-autoemulate.emulators.gradient_boosting">autoemulate.emulators.gradient_boosting</a>
+</li>
+        <li><a href="reference/emulators/light_gbm.html#module-autoemulate.emulators.light_gbm">autoemulate.emulators.light_gbm</a>
+</li>
+        <li><a href="reference/emulators/neural_net_sk.html#module-autoemulate.emulators.neural_net_sk">autoemulate.emulators.neural_net_sk</a>
+</li>
+        <li><a href="reference/emulators/polynomials.html#module-autoemulate.emulators.polynomials">autoemulate.emulators.polynomials</a>
+</li>
+        <li><a href="reference/emulators/rbf.html#module-autoemulate.emulators.radial_basis_functions">autoemulate.emulators.radial_basis_functions</a>
+</li>
+        <li><a href="reference/emulators/random_forest.html#module-autoemulate.emulators.random_forest">autoemulate.emulators.random_forest</a>
+</li>
+        <li><a href="reference/emulators/support_vector_machines.html#module-autoemulate.emulators.support_vector_machines">autoemulate.emulators.support_vector_machines</a>
+</li>
+        <li><a href="reference/history_matching.html#module-autoemulate.history_matching">autoemulate.history_matching</a>
+</li>
+        <li><a href="reference/sensitivity_analysis.html#module-autoemulate.sensitivity_analysis">autoemulate.sensitivity_analysis</a>
+</li>
+        <li><a href="reference/simulations/epidemic.html#module-autoemulate.simulations.epidemic">autoemulate.simulations.epidemic</a>
+</li>
+        <li><a href="reference/simulations/projectile.html#module-autoemulate.simulations.projectile">autoemulate.simulations.projectile</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="N">N</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference/emulators/neural_net_sk.html#autoemulate.emulators.neural_net_sk.NeuralNetSk">NeuralNetSk (class in autoemulate.emulators.neural_net_sk)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="O">O</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference/emulators/conditional_neural_process.html#autoemulate.emulators.conditional_neural_process.ConditionalNeuralProcess.output_dim_">output_dim_ (ConditionalNeuralProcess attribute)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="P">P</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference/compare.html#autoemulate.compare.AutoEmulate.plot_cv">plot_cv() (AutoEmulate method)</a>
+</li>
+      <li><a href="reference/compare.html#autoemulate.compare.AutoEmulate.plot_eval">plot_eval() (AutoEmulate method)</a>
+</li>
+      <li><a href="reference/compare.html#autoemulate.compare.AutoEmulate.plot_sensitivity_analysis">plot_sensitivity_analysis() (AutoEmulate method)</a>
+</li>
+      <li><a href="reference/emulators/conditional_neural_process.html#autoemulate.emulators.conditional_neural_process.ConditionalNeuralProcess.predict">predict() (ConditionalNeuralProcess method)</a>
+
+      <ul>
+        <li><a href="reference/emulators/gaussian_process.html#autoemulate.emulators.gaussian_process.GaussianProcess.predict">(GaussianProcess method)</a>
+</li>
+        <li><a href="reference/emulators/gaussian_process_mt.html#autoemulate.emulators.gaussian_process_mt.GaussianProcessMT.predict">(GaussianProcessMT method)</a>
+</li>
+        <li><a href="reference/emulators/gaussian_process_sklearn.html#autoemulate.emulators.gaussian_process_sklearn.GaussianProcessSklearn.predict">(GaussianProcessSklearn method)</a>
+</li>
+        <li><a href="reference/emulators/gradient_boosting.html#autoemulate.emulators.gradient_boosting.GradientBoosting.predict">(GradientBoosting method)</a>
+</li>
+        <li><a href="reference/emulators/light_gbm.html#autoemulate.emulators.light_gbm.LightGBM.predict">(LightGBM method)</a>
+</li>
+        <li><a href="reference/emulators/neural_net_sk.html#autoemulate.emulators.neural_net_sk.NeuralNetSk.predict">(NeuralNetSk method)</a>
+</li>
+        <li><a href="reference/emulators/rbf.html#autoemulate.emulators.radial_basis_functions.RadialBasisFunctions.predict">(RadialBasisFunctions method)</a>
+</li>
+        <li><a href="reference/emulators/random_forest.html#autoemulate.emulators.random_forest.RandomForest.predict">(RandomForest method)</a>
+</li>
+        <li><a href="reference/emulators/polynomials.html#autoemulate.emulators.polynomials.SecondOrderPolynomial.predict">(SecondOrderPolynomial method)</a>
+</li>
+        <li><a href="reference/emulators/support_vector_machines.html#autoemulate.emulators.support_vector_machines.SupportVectorMachines.predict">(SupportVectorMachines method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference/simulations/projectile.html#autoemulate.simulations.projectile.print_errors">print_errors() (in module autoemulate.simulations.projectile)</a>
+</li>
+      <li><a href="reference/simulations/projectile.html#autoemulate.simulations.projectile.print_predictions">print_predictions() (in module autoemulate.simulations.projectile)</a>
+</li>
+      <li><a href="reference/simulations/projectile.html#autoemulate.simulations.projectile.print_results">print_results() (in module autoemulate.simulations.projectile)</a>
+</li>
+      <li><a href="reference/compare.html#autoemulate.compare.AutoEmulate.print_setup">print_setup() (AutoEmulate method)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="R">R</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference/emulators/rbf.html#autoemulate.emulators.radial_basis_functions.RadialBasisFunctions">RadialBasisFunctions (class in autoemulate.emulators.radial_basis_functions)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference/emulators/random_forest.html#autoemulate.emulators.random_forest.RandomForest">RandomForest (class in autoemulate.emulators.random_forest)</a>
+</li>
+      <li><a href="reference/compare.html#autoemulate.compare.AutoEmulate.refit">refit() (AutoEmulate method)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="S">S</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference/compare.html#autoemulate.compare.AutoEmulate.save">save() (AutoEmulate method)</a>
+</li>
+      <li><a href="reference/emulators/polynomials.html#autoemulate.emulators.polynomials.SecondOrderPolynomial">SecondOrderPolynomial (class in autoemulate.emulators.polynomials)</a>
+</li>
+      <li><a href="reference/compare.html#autoemulate.compare.AutoEmulate.sensitivity_analysis">sensitivity_analysis() (AutoEmulate method)</a>
+</li>
+      <li><a href="reference/emulators/light_gbm.html#autoemulate.emulators.light_gbm.LightGBM.set_fit_request">set_fit_request() (LightGBM method)</a>
+</li>
+      <li><a href="reference/emulators/conditional_neural_process_attn.html#autoemulate.emulators.conditional_neural_process_attn.AttentiveConditionalNeuralProcess.set_predict_request">set_predict_request() (AttentiveConditionalNeuralProcess method)</a>
+
+      <ul>
+        <li><a href="reference/emulators/conditional_neural_process.html#autoemulate.emulators.conditional_neural_process.ConditionalNeuralProcess.set_predict_request">(ConditionalNeuralProcess method)</a>
+</li>
+        <li><a href="reference/emulators/gaussian_process.html#autoemulate.emulators.gaussian_process.GaussianProcess.set_predict_request">(GaussianProcess method)</a>
+</li>
+        <li><a href="reference/emulators/gaussian_process_mt.html#autoemulate.emulators.gaussian_process_mt.GaussianProcessMT.set_predict_request">(GaussianProcessMT method)</a>
+</li>
+        <li><a href="reference/emulators/gaussian_process_sklearn.html#autoemulate.emulators.gaussian_process_sklearn.GaussianProcessSklearn.set_predict_request">(GaussianProcessSklearn method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference/compare.html#autoemulate.compare.AutoEmulate.setup">setup() (AutoEmulate method)</a>
+</li>
+      <li><a href="reference/simulations/epidemic.html#autoemulate.simulations.epidemic.simulate_epidemic">simulate_epidemic() (in module autoemulate.simulations.epidemic)</a>
+</li>
+      <li><a href="reference/simulations/projectile.html#autoemulate.simulations.projectile.simulate_projectile">simulate_projectile() (in module autoemulate.simulations.projectile)</a>
+</li>
+      <li><a href="reference/simulations/projectile.html#autoemulate.simulations.projectile.simulate_projectile_multioutput">simulate_projectile_multioutput() (in module autoemulate.simulations.projectile)</a>
+</li>
+      <li><a href="reference/simulations/projectile.html#autoemulate.simulations.projectile.simulator_base">simulator_base() (in module autoemulate.simulations.projectile)</a>
+</li>
+      <li><a href="reference/compare.html#autoemulate.compare.AutoEmulate.summarise_cv">summarise_cv() (AutoEmulate method)</a>
+</li>
+      <li><a href="reference/compare.html#autoemulate.compare.AutoEmulate.summarize_cv">summarize_cv() (AutoEmulate method)</a>
+</li>
+      <li><a href="reference/emulators/support_vector_machines.html#autoemulate.emulators.support_vector_machines.SupportVectorMachines">SupportVectorMachines (class in autoemulate.emulators.support_vector_machines)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="X">X</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference/emulators/conditional_neural_process.html#autoemulate.emulators.conditional_neural_process.ConditionalNeuralProcess.X_train_">X_train_ (ConditionalNeuralProcess attribute)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="Y">Y</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="reference/emulators/conditional_neural_process.html#autoemulate.emulators.conditional_neural_process.ConditionalNeuralProcess.y_train_">y_train_ (ConditionalNeuralProcess attribute)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Alan Turing Institute
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  Copyright &copy; 2025
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
