@@ -1,4 +1,3 @@
-import numpy as np
 from sklearn.metrics import r2_score
 from sklearn.metrics import root_mean_squared_error
 
