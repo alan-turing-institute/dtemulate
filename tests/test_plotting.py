@@ -263,18 +263,20 @@ def test__plot_cv_input_range(ae_multi_output, monkeypatch):
         _plot_cv(cv_results, X, y, input_index=2)
 
 
-# ------------------------------ most important tests, does it work? ----------------
-# ------------------------------ test plot_cv ----------------------------------
+# # ------------------------------ most important tests, does it work? ----------------
+# # ------------------------------ test plot_cv ----------------------------------
 
 
-# test plots with best cv per model, Xy plot
-def test_plot_cv(ae_single_output):
+# # test plots with best cv per model, Xy plot
+def test_plot_cv(ae_single_output, monkeypatch):
+    monkeypatch.setattr(plt, "show", lambda: None)
     fig = ae_single_output.plot_cv(style="Xy")
     assert isinstance(fig, plt.Figure)
     assert len(fig.axes) == 3
 
 
-def test_plot_cv_input_index(ae_single_output):
+def test_plot_cv_input_index(ae_single_output, monkeypatch):
+    monkeypatch.setattr(plt, "show", lambda: None)
     fig = ae_single_output.plot_cv(input_index=1)
     assert isinstance(fig, plt.Figure)
     assert len(fig.axes) == 3
@@ -285,7 +287,8 @@ def test_plot_cv_input_index_out_of_range(ae_single_output):
         ae_single_output.plot_cv(input_index=2)
 
 
-def test_plot_cv_output_index(ae_multi_output):
+def test_plot_cv_output_index(ae_multi_output, monkeypatch):
+    monkeypatch.setattr(plt, "show", lambda: None)
     fig = ae_multi_output.plot_cv(output_index=1)
     assert isinstance(fig, plt.Figure)
     assert len(fig.axes) == 3
@@ -297,13 +300,15 @@ def test_plot_cv_output_index_out_of_range(ae_multi_output):
 
 
 # test plots with best cv per model, standard [;pt]
-def test_plot_cv_actual_vs_predicted(ae_single_output):
+def test_plot_cv_actual_vs_predicted(ae_single_output, monkeypatch):
+    monkeypatch.setattr(plt, "show", lambda: None)
     fig = ae_single_output.plot_cv(style="actual_vs_predicted")
     assert isinstance(fig, plt.Figure)
     assert len(fig.axes) == 3
 
 
-def test_plot_cv_output_index_actual_vs_predicted(ae_multi_output):
+def test_plot_cv_output_index_actual_vs_predicted(ae_multi_output, monkeypatch):
+    monkeypatch.setattr(plt, "show", lambda: None)
     fig = ae_multi_output.plot_cv(style="actual_vs_predicted", output_index=1)
     assert isinstance(fig, plt.Figure)
     assert len(fig.axes) == 3
@@ -315,19 +320,22 @@ def test_plot_cv_output_index_actual_vs_predicted_out_of_range(ae_multi_output):
 
 
 # test plots with all cv folds for a single model
-def test_plot_cv_model(ae_single_output):
+def test_plot_cv_model(ae_single_output, monkeypatch):
+    monkeypatch.setattr(plt, "show", lambda: None)
     fig = ae_single_output.plot_cv(model="gp")
     assert isinstance(fig, plt.Figure)
     assert len(fig.axes) == 6  # 5 cv folds, but three columns so 6 subplots are made
 
 
-def test_plot_cv_model_input_index(ae_single_output):
+def test_plot_cv_model_input_index(ae_single_output, monkeypatch):
+    monkeypatch.setattr(plt, "show", lambda: None)
     fig = ae_single_output.plot_cv(model="gp", input_index=1)
     assert isinstance(fig, plt.Figure)
     assert len(fig.axes) == 6
 
 
-def test_plot_cv_model_output_index(ae_multi_output):
+def test_plot_cv_model_output_index(ae_multi_output, monkeypatch):
+    monkeypatch.setattr(plt, "show", lambda: None)
     fig = ae_multi_output.plot_cv(model="gp", output_index=1)
     assert isinstance(fig, plt.Figure)
     assert len(fig.axes) == 6
@@ -343,8 +351,9 @@ def test_plot_cv_model_output_index_out_of_range(ae_multi_output):
         ae_multi_output.plot_cv(model="gp", output_index=2)
 
 
-# ------------------------------ test _plot_model ------------------------------
-def test__plot_model_int(ae_single_output):
+# # ------------------------------ test _plot_model ------------------------------
+def test__plot_model_int(ae_single_output, monkeypatch):
+    monkeypatch.setattr(plt, "show", lambda: None)
     fig = _plot_model(
         ae_single_output.get_model(name="gp"),
         ae_single_output.X,
@@ -357,7 +366,8 @@ def test__plot_model_int(ae_single_output):
     assert all(term in fig.axes[0].get_title() for term in ["X", "y", "vs."])
 
 
-def test__plot_model_list(ae_single_output):
+def test__plot_model_list(ae_single_output, monkeypatch):
+    monkeypatch.setattr(plt, "show", lambda: None)
     fig = _plot_model(
         ae_single_output.get_model(name="gp"),
         ae_single_output.X,
@@ -382,7 +392,8 @@ def test__plot_model_int_out_of_range(ae_single_output):
         )
 
 
-def test__plot_model_actual_vs_predicted(ae_single_output):
+def test__plot_model_actual_vs_predicted(ae_single_output, monkeypatch):
+    monkeypatch.setattr(plt, "show", lambda: None)
     fig = _plot_model(
         ae_single_output.get_model(name="gp"),
         ae_single_output.X,

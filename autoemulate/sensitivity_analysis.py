@@ -4,6 +4,7 @@ import pandas as pd
 from SALib.analyze.sobol import analyze
 from SALib.sample.sobol import sample
 
+from autoemulate.plotting import _display_figure
 from autoemulate.utils import _ensure_2d
 
 
@@ -298,7 +299,5 @@ def _plot_sensitivity_analysis(results, index="S1", n_cols=None, figsize=None):
         )
 
         plt.tight_layout()
-        # prevent double plotting in notebooks
-        plt.close(fig)
 
-    return fig
+    return _display_figure(fig)
