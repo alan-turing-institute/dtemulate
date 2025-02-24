@@ -1,7 +1,6 @@
 import numpy as np
 import pandas as pd
 import pytest
-from sklearn.datasets import make_regression
 
 from autoemulate.emulators import RandomForest
 from autoemulate.experimental_design import LatinHypercube
@@ -151,21 +150,11 @@ def sobol_results_1d(model_1d):
 # # test conversion to DataFrame --------------------------------------------------
 @pytest.mark.filterwarnings("ignore::FutureWarning")
 @pytest.mark.parametrize(
-    "problem, expected_names",
-    [
-        (
-            {
-                "num_vars": 2,
-                "names": ["c", "v0"],
-                "bounds": [(-5.0, 1.0), (0.0, 1000.0)],
-            },
-            ["c", "v0", "c-v0"],
-        ),
-        (None, ["X1", "X2", "X1-X2"]),
-    ],
+    "expected_names",
+    [["c", "v0", "c", "v0", ["c", "v0"]]],
 )
-def test_sobol_results_to_df(sobol_results_1d, problem, expected_names):
-    df = _sobol_results_to_df(sobol_results_1d, problem)
+def test_sobol_results_to_df(sobol_results_1d, expected_names):
+    df = _sobol_results_to_df(sobol_results_1d)
     assert isinstance(df, pd.DataFrame)
     assert df.columns.tolist() == [
         "output",
@@ -174,7 +163,7 @@ def test_sobol_results_to_df(sobol_results_1d, problem, expected_names):
         "value",
         "confidence",
     ]
-    assert expected_names in df["parameter"].unique()
+    assert expected_names == df["parameter"].to_list()
     assert all(isinstance(x, float) for x in df["value"])
     assert all(isinstance(x, float) for x in df["confidence"])
 
@@ -185,23 +174,13 @@ def test_sobol_results_to_df(sobol_results_1d, problem, expected_names):
 # test _validate_input ----------------------------------------------------------
 @pytest.mark.filterwarnings("ignore::FutureWarning")
 def test_validate_input(sobol_results_1d):
-    problem = {
-        "num_vars": 2,
-        "names": ["c", "v0"],
-        "bounds": [(-5.0, 1.0), (0.0, 1000.0)],
-    }
     with pytest.raises(ValueError):
-        _validate_input(sobol_results_1d, problem=problem, index="S3")
+        _validate_input(sobol_results_1d, index="S3")
 
 
 @pytest.mark.filterwarnings("ignore::FutureWarning")
 def test_validate_input_valid(sobol_results_1d):
-    problem = {
-        "num_vars": 2,
-        "names": ["c", "v0"],
-        "bounds": [(-5.0, 1.0), (0.0, 1000.0)],
-    }
-    Si = _validate_input(sobol_results_1d, problem=problem, index="S1")
+    Si = _validate_input(sobol_results_1d, index="S1")
     assert isinstance(Si, pd.DataFrame)
 
 
