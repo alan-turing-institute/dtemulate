@@ -129,6 +129,15 @@
         "design",
         "ideas"
       ]
+    },
+    {
+      "login": "willu47",
+      "name": "Will Usher",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3727919?v=4",
+      "profile": "https://www.energy.kth.se/energy-systems",
+      "contributions": [
+        "code"
+      ]
     }
   ]
 }
