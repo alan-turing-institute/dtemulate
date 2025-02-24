@@ -129,6 +129,18 @@
         "design",
         "ideas"
       ]
+    },
+    {
+      "login": "sgreenbury",
+      "name": "Sam Greenbury",
+      "avatar_url": "https://avatars.githubusercontent.com/u/50113363?v=4",
+      "profile": "https://github.com/sgreenbury",
+      "contributions": [
+        "code",
+        "ideas",
+        "review",
+        "projectManagement"
+      ]
     }
   ]
 }
